@@ -1,0 +1,29 @@
+;-----------SERVER--------------------
+? not local server : exit
+
+_dis=10
+_i= 0
+_typ  = "smokeShellGreen" 
+_kde = getpos chemural
+chemPlace = getpos chemUral
+publicvariable "chemPlace"
+
+"Bo_GBU12_LGB" createvehicle  getpos chemural
+~0.2
+"Bo_GBU12_LGB" createvehicle  [(_kde  select 0) +_dis,(_kde  select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(_kde  select 0) +_dis,(_kde  select 1) -_dis]
+"Bo_GBU12_LGB" createvehicle  [(_kde  select 0) -_dis,(_kde  select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(_kde  select 0) -_dis,(_kde  select 1) -_dis]
+~0.3
+"Bo_GBU12_LGB" createvehicle  getpos chemural
+
+#smoke
+_typ createvehicle  getpos chemural
+_typ createvehicle  [(_kde  select 0) +_dis,(_kde  select 1) +_dis]
+_typ createvehicle  [(_kde  select 0) +_dis,(_kde  select 1) -_dis]
+_typ createvehicle  [(_kde  select 0) -_dis,(_kde  select 1) +_dis]
+_typ createvehicle  [(_kde  select 0) -_dis,(_kde  select 1) -_dis]
+_i = _i + 1
+? _i == 20 : chemend = true; publicvariable "chemend"
+~53
+goto "smoke"

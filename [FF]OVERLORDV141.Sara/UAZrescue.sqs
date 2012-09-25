@@ -1,0 +1,69 @@
+
+;-------- UAZ for task 9 (Find Mi-17,secondary) ------------------
+
+;-----------SERVER--------------------
+? not local server :goto "random"
+~ (random 130 + 130)
+RescueWait = true
+publicvariable "RescueWait"
+
+;-----------GLOBAL--------------------
+#random
+@RescueWait
+? status9 == "NONE" : [resistance,"HQ"] sideChat "***** Russians are looking for crashed Mi-17  *****"
+~3
+? status9 == "NONE" : hint "If russian patrol find crashed Mi-17,they take pilot with documents to their base."
+
+;-----------SERVER--------------------
+? not local server :goto "pilotInUaz"
+
+uaz1Crash doMove [(crash select 0)-5,(crash select 1)-2,0]
+uaz2Crash doMove [(crash select 0)+5,(crash select 1)-2,0]
+
+
+#loop
+? uaz1Crash distance crash < 30 : PilotDocument moveincargo uaz1Crash; PilotSafe = true; publicvariable "PilotSafe"; selectUAZ = uaz1Crash; publicVariable "selectUAZ"; goto "PilotinUaz"
+
+? uaz2Crash distance crash < 30 : PilotDocument moveincargo uaz2Crash; PilotSafe = true; publicvariable "PilotSafe"; selectUAZ = uaz2Crash; publicVariable "selectUAZ"; goto "PilotinUaz"
+
+? !(canMove uaz1Crash) and !(canMove uaz2Crash) : PilotDocument doMove [19237.2,13947.5,0.001]
+
+? status9 != "NONE" : exit
+
+~5
+goto "loop"
+
+;-------------GLOBAL-----------------
+#PilotInUaz
+
+@PilotSafe
+
+PilotDocument removeaction documents
+documents2 = selectUAZ addaction ["Take documents","documents.sqs"]
+
+? status9 != "DONE" : [resistance,"HQ"] sideChat "***** Russians have found crashed Mi-17 *****"
+
+;-----------SERVER--------------------
+? not local server :goto "konec"
+
+_time = 0
+uaz1Crash doMove [19237.2,13947.5,0.001]
+uaz2Crash doMove [19237.2,13947.5,0.001]
+
+#loop2
+_time = _time + 10
+
+? _time > 1300 : status9 = "FAILED";publicvariable "status9" ;goto "konec"
+? status9 == "DONE" : exit
+? _UAZ distance t72Epita < 150 or !alive _UAZ : status9 = "FAILED";publicvariable "status9" ;goto "konec"
+
+~10
+goto "loop2"
+
+
+;-------------GLOBAL-----------------
+#konec
+@status9 == "DONE" or status9 == "FAILED"
+uaz1Crash removeaction documents2
+uaz2Crash removeaction documents2
+exit

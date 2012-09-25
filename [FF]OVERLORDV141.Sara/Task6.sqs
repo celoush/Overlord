@@ -1,0 +1,204 @@
+
+;-------- TASK 6 (CAPTURE SOMATO,primary) ------------------
+
+;-------10 groups---------------------
+;-------31 soldiers -------------------
+
+;-----------SERVER--------------------
+? not local server :goto "random"
+~ (random 20 + 20)
+Task6Wait = true
+
+pocet = 0
+? alive abrams1 : pocet= pocet+ 1
+? alive abrams2 : pocet= pocet+ 1
+? alive abrams3 : pocet= pocet+ 1
+
+publicvariable "Task6Wait"
+publicVariable "pocet"
+
+;-----------GLOBAL--------------------
+#random
+@Task6Wait
+
+
+"Somato" setMarkerColor "colorRed"
+player say "telegraph"
+"6"objStatus "ACTIVE" 
+~1
+hint "Capture Somato"
+[resistance,"HQ"] sideChat "***** New primary mission: *****"
+[west,"HQ"] sideChat "***** New primary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Capture Somato *****"
+[west,"HQ"] sideChat "***** Capture Somato *****"
+
+~1
+
+? pocet== 1 : [resistance,"HQ"] SideChat " ***** 1 US tank will help us to attack on Somato ***** "
+? pocet== 2 : [resistance,"HQ"] SideChat " ***** 2 US tanks will help us to attack on Somato ***** "
+? pocet== 3 : [resistance,"HQ"] SideChat " ***** 3 US tanks will help us to attack on Somato ***** "
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+abrams1 doMove [9464,8460]; 
+
+abrams2 doMove [9361,8369]
+
+abrams3 doMove [9082,8320]
+
+;------------------SOMATO SOLDIERS-----------------------------------
+"soldierEB" createUnit [[9249.18,8223.09,0.1], grpR1 , "s1=this"]
+"soldierEB" createUnit [ [9130.81,8228.84,0.00123596], grpR1, "s1=this"]
+"soldierEAT" createUnit [ [9135.94,8221.62,0.00123596], grpR2, "s2=this"]
+"soldierEB" createUnit [ [9133.29,8322.57,0.00123596], grpR3, "s3=this"]
+"soldierEB" createUnit [ [9231.53,8320.28,0.00123596], grpR4, "s4=this"]
+"soldierEAT" createUnit [ [9262.2,8315.77,0.0012207], grpR5, "s5=this"]
+"soldierEB" createUnit [ [9264.28,8459.33,0.00119019], grpR6, "s6=this"]
+"soldierEB" createUnit [ [9144.52,8259.97,0.00143433], grpR7, "s7=this"]
+"soldierEB" createUnit [ [9165.89,8288.92,0.00141907], grpR8, "s8=this"]
+"soldierEB" createUnit [ [9192.62,8293.06,0.00141907], grpR9, "s9=this"]
+"soldierEB" createUnit [ [9192.62,8293.06,0.00141907], grpR10, "s10=this"]
+
+{_x execVM "soldierwalkguard.sqf"} forEach [s1,s2,s3,s4,s5,s6,s7,s8,s9,s10]
+~10
+"soldierEB" createUnit [ [9242.6,8222.41,0.01], grpR1]
+"soldierEAT" createUnit [ [9218.41,8222.88,0.00123596], grpR1]
+"soldierEB" createUnit [ [9217.41,8222.88,0.00123596], grpR1]
+~1
+"soldierEB" createUnit [ [9127.29,8222.5,0.00123596], grpR2]
+"soldierEAT" createUnit [ [9135.94,8221.62,0.00123596], grpR2]
+"soldierEAT" createUnit [ [9136.94,8221.62,0.00123596], grpR2]
+~1
+"soldierEB" createUnit [ [9129.61,8295.96,0.00123596], grpR3]
+"soldierE" createUnit [ [9125.03,8291.81,0.00123596], grpR3]
+"soldierE" createUnit [ [9126.03,8291.81,0.00123596], grpR3]
+~1
+"soldierE" createUnit [ [9173.46,8317.64,0.00123596], grpR4]
+"soldierEAA" createUnit [ [9231.26,8315.42,0.00123596], grpR4]
+"soldierE" createUnit [ [9233.26,8315.42,0.00123596], grpR4]
+~1
+"soldierE" createUnit [ [9268.01,8321.2,0.00123596], grpR5]
+"soldierEMG" createUnit [ [9266.01,8321.2,0.00123596], grpR5]
+"soldierEMG" createUnit [ [9265.01,8321.2,0.00123596], grpR5]
+~1
+"soldierEAT" createUnit [ [9262.11,8325.29,0.0012207], grpR6]
+"soldierE" createUnit [ [9260.89,8447.16,0.00120544], grpR6]
+"soldierE" createUnit [ [9263.89,8447.16,0.00120544], grpR6]
+~1
+"soldierEAT" createUnit [ [9189.87,8445.68,0.00120544], grpR7]
+"soldierE" createUnit [ [9182.68,8445.85,0.00123596], grpR7]
+"soldierE" createUnit [ [9183.68,8445.85,0.00123596], grpR7]
+~1
+"soldierE" createUnit [ [9148.24,8258.97,0.00141907], grpR8]
+"soldierEAT" createUnit [ [9152.64,8284.65,0.00141907], grpR8]
+"soldierEMG" createUnit [ [9153.64,8284.65,0.00141907], grpR8]
+~1
+"soldierE" createUnit [ [9176.07,8266.72,0.00141907], grpR9]
+"soldierEAT" createUnit [ [9173.33,8265.81,0.00141907], grpR9]
+"soldierEAT" createUnit [ [9174.33,8265.81,0.00141907], grpR9]
+~1
+"soldierEMG" createUnit [ [9194.62,8293.06,0.00141907], grpR10]
+"soldierEB" createUnit [ [9190.07,8290.76,0.00140381], grpR10]
+"soldierEAT" createUnit [ [9202.92,8319.21,0.00141907], grpR10]
+
+;----------------------BASE SOLDIERS -----------------------------------
+"soldierEB" createUnit [ [8110.21,7874.24,0.00143433], grpR11]
+~1
+"soldierEB" createUnit [ [8112.13,7869.87,0.00143433], grpR11]
+"soldierE" createUnit [ [8151.02,7853.7,0.00143433], grpR11]
+~1
+"soldierEB" createUnit [ [8217.75,7857.62,0.00138855], grpR11]
+"soldierEAT" createUnit [ [8219.75,7857.62,0.00138855], grpR11]
+~1
+"soldierEB" createUnit [ [8215.75,7857.62,0.00138855], grpR11]
+
+;--------------------AA Soldiers---------------------------------------------
+"soldierEAA" createUnit [ [9387,8689,0.01], grpR12]
+~1
+"soldierEAA" createUnit [ [9360,8689,0.01], grpR12]
+~1
+"soldierEAA" createUnit [ [8215,7860,0.01], grpR12]
+
+~2
+;-------------BVP1------------------------------------------------------
+bvp1 = "bmp2" createVehicle [9391.95,8689.92,0.01]
+"soldierEcrew" createUnit [getpos rus,grpR12,"this moveindriver bvp1"]
+"soldierEcrew" createUnit [getpos rus,grpR12,"this moveingunner bvp1"]
+~2
+;-------------BVP2------------------------------------------------------
+bvp2 = "bmp2" createVehicle [9266.22,8704,0.01]
+"soldierEcrew" createUnit [getpos rus,grpR12,"this moveindriver bvp2"]
+"soldierEcrew" createUnit [getpos rus,grpR12,"this moveingunner bvp2"]
+~5
+;-------------Tank1------------------------------------------------------
+tank1 = "t72" createVehicle [8191,7884.6,0.01]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveindriver tank1"]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveingunner tank1"]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveincommander tank1"]
+~5
+;-------------Tank2------------------------------------------------------
+tank2 = "t72" createVehicle [8175,7884.6,0.01]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveindriver tank2"]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveingunner tank2"]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveincommander tank2"]
+;-------------Tank3------------------------------------------------------
+~5
+tank3 = "t72" createVehicle [8161,7884.6,0.01]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveindriver tank3"]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveingunner tank3"]
+"soldierEcrew" createUnit [getpos rus,grpRT72,"this moveincommander tank3"]
+~0.5
+_somatoguard = +(list somato)
+
+tank1 setVehicleLock "LOCKED"
+tank2 setVehicleLock "LOCKED"
+tank3 setVehicleLock "LOCKED"
+;----------------------- DONE? -------------------------------------------
+
+@count list somato < 3 
+status6 = "DONE"
+publicVariable "status6"
+{_x switchmove "testsurrender"}foreach list somato
+{removeallweapons _x}foreach list somato
+
+;---------------- GLOBAL ------------------------------------------------
+#skok
+@status6 == "DONE"
+
+[]exec "tanky.sqs"
+
+~3
+[resistance,"HQ"] sideChat "***** Russians in Somato have surrended *****"
+[west,"HQ"] sideChat "***** Russians in Somato surrended *****"
+
+"6"objStatus "HIDDEN" 
+"Somato" setMarkerColor "colorGreen"
+~5
+titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]
+playsound "fanfare"
+
+;-----------SERVER--------------------
+? not local server : exit
+
+~6
+{_x switchMove "AmovPercMstpSsurWnonDnon"} foreach _somatoguard 
+~1
+{_x setdammage 1}forEach list somato
+~10
+{hidebody _x} foreach _somatoguard 
+
+deleteGroup grpR1
+deleteGroup grpR2
+deleteGroup grpR3
+deleteGroup grpR4
+deleteGroup grpR5
+deleteGroup grpR6
+deleteGroup grpR7
+deleteGroup grpR8
+deleteGroup grpR9
+deleteGroup grpR10
+deleteGroup grpR11
+deleteGroup grpR12
+exit 

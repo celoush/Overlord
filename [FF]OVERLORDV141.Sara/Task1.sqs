@@ -1,0 +1,29 @@
+
+;-------- TASK 1 (AIRPORT,primary) ------------------
+
+~15
+player say "telegraph"
+"1"objStatus "ACTIVE" 
+[resistance,"HQ"] sideChat " ***** New primary mission: ***** "
+[west,"HQ"] sideChat " ***** New primary mission: ***** "
+~1
+[resistance,"HQ"] sideChat " ***** Capture airport near Paraiso ***** "
+[west,"HQ"] sideChat " ***** Capture airport near Paraiso ***** "
+? local server : airportguard = +(list letisko)
+
+@status1 == "DONE"
+"Respawn_guerrila" setMarkerPos [9600.94,9955.65]
+"1" objStatus "hidden"
+"airport" setMarkerColor "colorGreen"
+[resistance,"HQ"] sideChat "OK, airport is under our control"
+[]exec "hint1.sqs"
+titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]
+playsound "fanfare"
+~(random 20) + 8
+;-----------SERVER--------------------
+? not local server : exit
+[] exec "su34.sqs"
+~120
+{hidebody _x} foreach airportguard
+
+exit 

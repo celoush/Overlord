@@ -1,0 +1,7 @@
+
+;-------- Documents were taken for Task 9 (Find Mi-17,secondary) ------------------
+meno2 = name player
+status9 = "DONE"
+publicvariable "Status9"
+publicvariable "meno2"
+exit

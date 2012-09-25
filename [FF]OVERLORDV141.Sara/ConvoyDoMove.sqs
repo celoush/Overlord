@@ -1,0 +1,23 @@
+
+;-------- Convoy way for TASK 10 (Destroy convoy,secondary) ------------------
+~60
+bvp2Konvoj doMove [19250,14000,0.00142479]
+~90
+bvp1Konvoj doMove [19281.9,13958.2,0.00142479]
+~10
+Truck1Konvoj doMove [19280,13963,0.00142479]
+~10
+Truck2Konvoj doMove [19278,13969,0.00142479]
+~10
+Truck3Konvoj doMove [19276,13978,0.00142479]
+~10
+Truck4Konvoj doMove [19274,13985,0.00142479]
+~10
+Truck5Konvoj doMove [19272,13995,0.00142479]
+~10
+Truck6Konvoj doMove [19270,14005,0.00142479]
+~45
+bvp3Konvoj doMove [19260,13945,0.00142479]
+
+
+exit

@@ -1,0 +1,39 @@
+
+;-------- TASK 7 (Destroy russians tanks,secodary) ------------------
+
+~50
+[resistance,"HQ"] sideChat "***** Recieved information about 3 russians tanks at base *****"
+~ 10
+player say "telegraph"
+"7"objStatus "ACTIVE" 
+~1
+hint "Destroy russians tanks at base"
+[resistance,"HQ"] sideChat "***** New secondary mission: *****"
+[west,"HQ"] sideChat "***** New secondary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Destroy russians tanks while they are at base *****"
+
+"tanks" setMarkerPos [8181,7884]
+
+;-----------SERVER--------------------
+? not local server :goto "konec"
+#loop
+~20
+? !alive tank1 and !alive tank2 and !alive tank3 : status7 = "DONE";publicvariable "status7" ;goto "konec"
+
+? status6 == "DONE" : status7 = "FAILED"; publicvariable "status7" ;goto "konec"
+
+goto "loop"
+
+;---------------- GLOBAL ------------------------------------------------
+#konec
+@status7 != "NONE" 
+~15
+? status7 == "DONE" : [resistance,"HQ"] sideChat "***** OK,russian tanks are destroyed *****";titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2];playsound "fanfare"
+
+? status7 == "FAILED" : [resistance,"HQ"] sideChat "***** Shit, we didnt destroy russian tanks *****";titleText ["M I S S I O N   F A I L E D ","PLAIN",2]
+
+"7"objStatus "HIDDEN" 
+"tanks" setMarkerpos [0,0]
+
+exit 

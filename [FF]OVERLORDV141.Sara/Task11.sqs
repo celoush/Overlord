@@ -1,0 +1,165 @@
+
+;-------- TASK 11 (Destroy artillery,secondary) ------------------
+
+
+@status1 == "DONE" 
+;-----------SERVER--------------------
+? not local server :goto "random"
+~ (random 60 + 60)
+Task11Wait = true
+publicvariable "Task11Wait"
+
+;-----------GLOBAL--------------------
+#random
+@Task11Wait
+
+"ArtyBase" setMarkerColor "colorRed"
+
+[resistance,"HQ"] sideChat "***** Russians bring artillery on Sahrani. They will bombard our airport *****"
+~2
+player say "telegraph"
+"11"objStatus "ACTIVE" 
+~1
+hint "Destroy russian artillery"
+[resistance,"HQ"] sideChat "***** New secondary mission: *****"
+[west,"HQ"] sideChat "***** New secondary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Destroy russian artillery *****"
+[west,"HQ"] sideChat "***** Destroy russian artillery *****"
+~1
+
+[]exec "artillery.sqs"
+
+;-----------SERVER---------------------------------------------
+? not local server :goto "konec"
+grpRarty1 = createGroup east
+grpRarty5 = createGroup east
+grpRarty6 = createGroup east
+grpRarty7 = createGroup east
+
+;-------------DELO1---------------------------------------------
+delo1 = "d30" createVehicle [8169.92,17052.6,0.00143814]
+"soldierEcrew" createUnit [getpos rus2,grpRarty1,"this moveingunner delo1, this disableAI ""target"";this disableAI ""autotarget"""]
+delo1 setdir 120
+delo1 doWatch [8502.38,16500,2000]
+~1
+;-------------DELO2---------------------------------------------
+delo2 = "d30" createVehicle [8160.09,17032,0.00143814]
+"soldierEcrew" createUnit [getpos rus2,grpRarty1,"this moveingunner delo2, this disableAI ""target"";this disableAI ""autotarget"""]
+delo2 setdir 120
+delo2 doWatch [8502.38,16500,2000]
+~1
+;-------------DELO3---------------------------------------------
+delo3 = "d30" createVehicle [8142.41,16993.4,0.00143814]
+"soldierEcrew" createUnit [getpos rus2,grpRarty1,"this moveingunner delo3, this disableAI ""target"";this disableAI ""autotarget"""]
+delo3 setdir 120
+delo3 doWatch [8502.38,16500,2000]
+~1
+;-------------DELO4---------------------------------------------
+delo4 = "d30" createVehicle [8132.94,16973.1,0.00143814]
+"soldierEcrew" createUnit [getpos rus2,grpRarty1,"this moveingunner delo4, this disableAI ""target"";this disableAI ""autotarget"""]
+delo4 setdir 120
+delo4 doWatch [8502.38,16500,2000]
+~1
+;-------------DELO5---------------------------------------------
+delo5 = "d30" createVehicle [8196.16,16998.6,0.00143814]
+"soldierEcrew" createUnit [getpos rus2,grpRarty1,"this moveingunner delo5, this disableAI ""target"";this disableAI ""autotarget"""]
+delo5 setdir 120
+delo5 doWatch [8502.38,16500,2000]
+~1
+;-------------DELO6---------------------------------------------
+delo6 = "d30" createVehicle [8189.73,16983.3,0.00143814]
+"soldierEcrew" createUnit [getpos rus2,grpRarty1,"this moveingunner delo6, this disableAI ""target"";this disableAI ""autotarget"""]
+delo6 setdir 120
+delo6 doWatch [8502.38,16500,2000]
+~1
+
+;--------------SHILKA1------------------------------------------------------
+shilka1Arty  = "ZSU" createVehicle [8536.48,16942.6,0.01]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveindriver shilka1Arty"]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveingunner shilka1Arty"]
+~0.5
+"soldierEB" createUnit [ [8538,16945,0.01], grpShilka]
+"soldierEB" createUnit [ [8538,16940,0.01], grpShilka]
+~1
+;--------------SHILKA2------------------------------------------------------
+shilka2Arty  = "ZSU" createVehicle [7766.82,16513.9,0.00125122]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveindriver shilka2Arty"]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveingunner shilka2Arty"]
+~0.5
+"soldierEB" createUnit [ [7769,16514,0.01], grpShilka]
+"soldierEB" createUnit [ [7762,16511,0.01], grpShilka]
+~1
+;--------------BVP1------------------------------------------------------
+bvp1Arty  = "bmp2" createVehicle [8147.03,17001.2,0.00133514]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveindriver bvp1Arty"]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveingunner bvp1Arty"]
+"soldierECrew" createUnit [getpos rus2,grpShilka,"this moveincommander bvp1Arty"]
+
+{_x disableAI "move"} forEach units grpShilka
+
+~0.5
+;-----------UAZ1Arty------------------
+"UAZ" createVehicle [8188.12,17035.7,0.00136185]
+"soldierEB" createUnit [ [8184.12,17035.7,0.00136185], grpRarty5]
+"soldierE" createUnit [ [8185.12,17037.7,0.00136185], grpRarty5]
+~1
+;-----------gate----------------------
+"soldierEB" createUnit [ [8192.68,17062.6,0.00136185], grpRarty6 ]
+"soldierE" createUnit [ [8194.68,17062.6,0.00136185],  grpRarty6 ]
+~1
+;-----------IN------------------------
+"soldierEB" createUnit [ [8202.93,17013,0.01],   grpRarty6 ]
+"soldierE" createUnit [ [8202.93,17016,0.01],   grpRarty6 ]
+~1
+"soldierEB" createUnit [ [8180.06,16944.3,0.01],   grpRarty6 ]
+"soldierE" createUnit [ [8178.06,16945.3,0.01],   grpRarty6 ]
+~1
+"soldierEB" createUnit [ [8103,16976.4,0.00136185],   grpRarty6 ]
+"soldierE" createUnit [ [8101.64,16977.4,0.00136185],   grpRarty6 ]
+~1
+"soldierEB" createUnit [ [8150.83,17076.5,0.00136185],   grpRarty6 ]
+"soldierE" createUnit [ [8150.83,17073,0.00136185],   grpRarty6 ]
+~0.5
+"soldierE" createUnit [ [8165.32,16992.9,0.00134659],   grpRarty6 ]
+~1
+"soldierEB" createUnit [ [9979.45,16639.4,0.000911713],   grpRarty6 ]
+
+{_x disableAI "move"} forEach units grpRarty6
+
+;---------------GUARD----------------------------------------
+~1
+"soldierEB" createUnit [ [8201.96,17080.4,0.000904083], grpRarty7]
+"soldierE" createUnit [ [8204.96,17080.4,0.000904083], grpRarty7]
+"soldierEAA" createUnit [ [8168.81,16969.4,0.000919342], grpRarty7]
+"soldierEAA" createUnit [ [8169.81,16969.4,0.000919342], grpRarty7]
+
+{_x execVM "soldierwalkguard.sqf"} forEach units grpRarty7
+
+;------------------ DONE? ------------------------------------------------------------------------
+@ !alive delo1 and !alive delo2 and !alive delo3 and !alive delo4 and !alive delo5 and !alive delo6
+status11 = "DONE" 
+publicVariable "status11"
+
+;---------------- GLOBAL --------------------------------------
+#konec
+
+@status11 == "DONE" 
+"11"objStatus "HIDDEN" 
+
+titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]; [resistance,"HQ"] sideChat "***** Great job. Artillery was destroyed *****"; [west,"HQ"] sideChat "***** Great job. Artillery was destroyed *****"
+playsound "fanfare"
+
+"ArtyBase" setMarkerColor "colorGreen"
+~60
+{_x setdammage 1}foreach units grpRarty1
+{_x setdammage 1}foreach units grpRarty5
+{_x setdammage 1}foreach units grpRarty6
+{_x setdammage 1}foreach units grpRarty7
+~2
+deletegroup grpRarty1
+deletegroup grpRarty5
+deletegroup grpRarty6
+deletegroup grpRarty7
+
+exit 

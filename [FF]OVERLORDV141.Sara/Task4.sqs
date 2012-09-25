@@ -1,0 +1,130 @@
+
+;-------- TASK 4 (HOTEL,secondary) ------------------
+
+
+@status5 == "DONE"
+;-----------SERVER--------------------
+? not local server :goto "random"
+~ (random 120 + 120)
+Task4Wait = true
+publicvariable "Task4Wait"
+
+;-----------GLOBAL--------------------
+#random
+@Task4Wait
+
+"Chantico" setMarkerColor "colorRed"
+
+[resistance,"HQ"] sideChat " ***** Our officer was captured. He is in hotel in Chantico ***** "
+~5
+player say "telegraph"
+"4"objStatus "ACTIVE" 
+~1
+hint "Rescue officer in Chantico"
+[resistance,"HQ"] sideChat " ***** New secondary mission: ***** "
+~1
+[resistance,"HQ"] sideChat " ***** Rescue officer in Chantico ***** "
+"task4" setMarkerPos [8307,9072]
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+"officerG" createUnit [[8280.05,9029.3,7.8], group civil, "officerG = this,this setpos [8280.05,9029.3,7.8]"]
+officerG setCaptive true
+officerG disableAI "move"
+removeallweapons officerG 
+
+"soldierEB" createUnit [ [8307.86,9072.85,0.00137], group rus ,"this setpos [8307.86,9072.85,0.001374] "]
+~0.5
+"soldierEAA" createUnit [ [8297.23,9045.39,0.00137], group rus,"this setpos [8297.23,9045.39,0.0013732] "]
+~0.5
+"soldierEAT" createUnit [ [8298.12,9019.03,0.00137], group rus,"this setpos [8298.12,9019.03,0.0013752] "]
+~0.5
+"soldierEAT" createUnit [ [8249.14,9030.8,0.001539], group rus,"this setpos [8249.14,9030.8,0.00153923] "]
+~0.5
+"soldierEAT" createUnit [ [8253.39,9045.33,0.00146], group rus,"this setpos [8253.39,9045.33,0.0014658] "]
+;--------------------------------------------------------------
+~0.5
+"soldierEB" createUnit [ [8261.67,9035.37,0.2], group rus,"this setpos [8261.67,9035.37,0.2] "]
+"soldierEB" createUnit [ [8262.15,9048.14,0.2], group rus,"this setpos [8262.15,9048.14,0.2] "]
+~0.5
+"soldierEB" createUnit [ [8273.08,9055.66,0.2], group rus,"this setpos [8273.08,9055.66,0.2] "]
+~0.5
+"soldierEB" createUnit [ [8287.17,9056.33,0.2], group rus,"this setpos [8287.17,9056.33,0.2] "]
+~0.5
+"soldierEB" createUnit [ [8287.86,9042.31,0.2], group rus,"this setpos [8287.86,9042.31,0.2] "]
+~0.5
+"soldierEB" createUnit [ [8284.12,9030.68,0.2], group rus,"this setpos [8284.12,9030.68,0.2] "]
+~0.5
+"soldierEB" createUnit [ [8270.11,9030.84,0.2], group rus,"this setpos [8270.11,9030.84,0.2]"]
+~0.5
+"soldierEB" createUnit [ [8268.7,9042.92,0.2], group rus,"this setpos [8268.7,9042.92,0.2] "]
+~0.5
+"soldierEB" createUnit [ [8275.1,9050.85,0.2], group rus,"this setpos [8275.1,9050.85,0.2] "]
+;---------------------------------------------------------------
+"soldierEB" createUnit [ [8268.95,9048.68,2], group rus,"this setpos [8268.95,9048.68,2]"]
+;---------------------------------------------------------------
+~0.5
+"soldierEB" createUnit [ [8274.79,9051.91,4], group rus,"this setpos [8274.79,9051.91,4]"]
+~0.5
+"soldierEB" createUnit [ [8280.84,9041.19,4], group rus,"this setpos [8280.84,9041.19,4]"]
+~0.5
+"soldierEAT" createUnit [ [8265.54,9036.15,4], group rus,"this setpos [8265.54,9036.15,4]"]
+~0.5
+"soldierEB" createUnit [ [8265.17,9054.53,4], group rus,"this setpos [8265.17,9054.53,4]"]
+;---------------------------------------------------------------
+"soldierEB" createUnit [ [8269.15,9048.45,6], group rus,"this setpos [8269.15,9048.45,6]"]
+;--------------------------------------------------------------
+~0.5
+"soldierEB" createUnit [ [8275.28,9050.91,7.8], group rus,"this setpos [8275.28,9050.91,7.8] "]
+~0.5
+"soldierEB" createUnit [ [8282.68,9054.47,7.8], group rus,"this setpos [8282.68,9054.47,7.8]"]
+~0.5
+"soldierEB" createUnit [ [8280.8,9036.58,7.8], group rus,"this setpos [8280.8,9036.58,7.8] "]
+~0.5
+"soldierEB" createUnit [ [8261.35,9054.27,7.8], group rus,"this setpos [8261.35,9054.27,7.8] "]
+;----------------------------------------------------------------
+~0.5
+"soldierEB" createUnit [ [8275.28,9050.91,7.8], group rus,"this setpos [8275.28,9050.91,11.3] "]
+~0.5
+"soldierEB" createUnit [ [8282.68,9054.47,7.8], group rus,"this setpos [8282.68,9054.47,11.3] "]
+~0.5
+"soldierEB" createUnit [ [8280.8,9036.58,7.8], group rus,"this setpos [8280.8,9036.58,11.3] "]
+~0.5
+"soldierEB" createUnit [ [8261.35,9054.27,7.8], group rus,"this setpos [8261.35,9054.27,11.3] "]
+;------------------------------------------------------------------------------------------------
+
+~0.5
+"soldierEAT" createUnit [ [8334.94,9173.39,0.00139236], group rus]
+"soldierEAA" createUnit [ [8333.94,9171.39,0.00139236], group rus]
+
+{_x disableAI "Move"} forEach units group rus
+~0.5
+_hotelguard = +(list chantico)
+
+@count list chantico < 7 and alive officerG or !alive officerG
+
+?count list chantico < 7 and alive officerG : status4 = "DONE"; publicVariable "status4";{_x switchmove "testsurrender"}foreach list chantico;{removeallweapons _x}foreach list chantico
+
+?!alive officerG : status4 = "FAILED";publicVariable "status4"
+
+
+;------------------------GLOBAL---------------------------------------------------------------------------
+#skok
+@status4 == "DONE" or status4 == "FAILED"
+task4Activate = false
+"4"objStatus "HIDDEN"
+"task4" setMarkerPos [0,0]
+
+? status4 == "DONE" : [west,"HQ"] sideChat " ***** OK, hotel is clear and officer is rescued ***** ";[resistance,"HQ"] sideChat " ***** OK, hotel is clear and officer is rescued ***** ";titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2];playsound "fanfare"
+
+? status4 == "FAILED" : [west,"HQ"] sideChat " ***** Shit, officer is dead ***** ";[resistance,"HQ"] sideChat " ***** Shit, officer is dead ***** ";titleText ["M I S S I O N   F A I L E D ","PLAIN",2]
+"Chantico" setMarkerColor "colorGreen"
+
+;-----------SERVER--------------------
+? not local server : exit
+~120
+{hidebody _x} foreach _hotelguard 
+
+exit 
+

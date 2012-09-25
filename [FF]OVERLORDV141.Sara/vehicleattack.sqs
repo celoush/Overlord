@@ -1,0 +1,66 @@
+_i = 0
+#prva
+_i = _i + 1
+_number = random 3
+_number = round _number 
+? _number == 0 : _kde = [12078.5,6120.42] ; _grp = corazolGroup1 
+? _number == 1 : _kde = [12382.8,6207.75] ; _grp = corazolGroup2 
+? _number == 2 : _kde = [12744.1,6226.85] ; _grp = corazolGroup3 
+? _number == 3 : _kde = [13253,6385.47]   ; _grp = corazolGroup4 
+
+
+;-------- prva vlna ------------------------------------
+~2
+? count units _grp > 6 : goto "create"
+
+_pole = ["t72","bmp2","brdm2","BRDM2_ATGM","UAZ_AGS30","UAZMG","t72","bmp2"]
+_pocetVozidiel = count _pole
+
+_randomVehicle = random (_pocetVozidiel - 1)
+_randomVehicle = round _randomVehicle 
+
+vozidlo = _pole select _randomVehicle createvehicle _kde
+vozidlo setVehicleLock "LOCKED"
+_pocet = _pocet + 1
+
+"soldierE" createunit [_kde, _grp ,"this moveindriver vozidlo"]
+"soldierE" createunit [_kde, _grp ,"this moveingunner vozidlo"]
+group driver vozidlo addWaypoint [[12332.4,7193.63,0.00154686],200]
+
+{hidebody _x} foreach units  _grp 
+
+? _i == 8 : goto "create"
+goto "prva"
+
+;--------------- loop ------------------------------------
+#create
+
+_number = random 3
+_number = round _number 
+? _number == 0 : _kde = [12078.5,6120.42] ; _grp = corazolGroup1 
+? _number == 1 : _kde = [12382.8,6207.75] ; _grp = corazolGroup2 
+? _number == 2 : _kde = [12744.1,6226.85] ; _grp = corazolGroup3 
+? _number == 3 : _kde = [13253,6385.47]   ; _grp = corazolGroup4 
+
+
+;-------- prva vlna ------------------------------------
+~15
+? count units _grp > 6 : goto "create"
+
+_pole = ["t72","bmp2","brdm2","BRDM2_ATGM","UAZ_AGS30","UAZMG","t72","bmp2"]
+_pocetVozidiel = count _pole
+
+_randomVehicle = random (_pocetVozidiel - 1)
+_randomVehicle = round _randomVehicle 
+
+vozidlo = _pole select _randomVehicle createvehicle _kde
+vozidlo setVehicleLock "LOCKED"
+_pocet = _pocet + 1
+
+"soldierE" createunit [_kde, _grp ,"this moveindriver vozidlo"]
+"soldierE" createunit [_kde, _grp ,"this moveingunner vozidlo"]
+group driver vozidlo addWaypoint [[12332.4,7193.63,0.00154686],200]
+
+{hidebody _x} foreach units  _grp 
+
+goto "create"

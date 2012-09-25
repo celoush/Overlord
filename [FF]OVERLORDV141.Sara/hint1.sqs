@@ -1,0 +1,69 @@
+
+;------------- After airpotr capture --------------------------
+
+;-----------SERVER--------------------
+? not local server :goto "next"
+BH3 setpos [9720,9996,0.1]
+~1
+mH4 setpos [9700,9996,0.1]
+~1
+mH5 setpos [9680,9996,0.1]
+~1
+mH6 setpos [9626.73,9998.43,0.001297]
+~1
+car1 setpos [9602,9983.03,0.00140381]
+~1
+car2 setpos [9598,9983.03,0.00140381]
+~1
+stryker setpos [9594,9983.03,0.00140381]
+
+#next
+~10
+hint "Respawn position changed (Airport)"
+~8
+hint "New vehicles created at airport"
+
+~30
+[resistance,"HQ"] sideChat " ***** US Army captured Paraiso. Their tanks are comming to airport to protect this area ***** "
+"Paraiso" setMarkerColor  "colorGreen"
+
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+;-------------ABRAMS1------------------------------------------------------
+abrams1 = "m1abrams" createVehicle [10085.7,9152.97,0.01]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveindriver abrams1"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveingunner abrams1"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveincommander abrams1"]
+abrams1 doMove [9635.59,9945]
+~10
+;-------------ABRAMS2------------------------------------------------------
+abrams2 = "m1abrams" createVehicle [10070.7,9152.97,0.01]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveindriver abrams2"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveingunner abrams2"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveincommander abrams2"]
+abrams2 doMove [9915.25,9968.65]
+~10
+;-------------ABRAMS3------------------------------------------------------
+abrams3 = "m1abrams" createVehicle [10050.7,9152.97,0.01]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveindriver abrams3"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveingunner abrams3"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveincommander abrams3"]
+abrams3 doMove [9859.58,10085.5]
+~10
+;-------------VULCAN1------------------------------------------------------
+vulcan1 = "vulcan" createVehicle [10020.7,9142.97,0.01]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveindriver vulcan1"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveingunner vulcan1"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveincommander vulcan1"]
+vulcan1 doMove [9960.39,10069.5]
+~10
+;-------------VULCAN2------------------------------------------------------
+vulcan2 = "vulcan" createVehicle [10010.7,9142.97,0.01]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveindriver vulcan2"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveingunner vulcan2"]
+"soldierWCrew" createUnit [getpos usa,usa,"this moveincommander vulcan2"]
+vulcan2 doMove [9578.01,9991.7]
+
+exit

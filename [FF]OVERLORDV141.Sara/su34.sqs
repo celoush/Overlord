@@ -1,0 +1,42 @@
+~10
+
+_i = 0
+_rychlost = -140
+
+su34 = "su34" createVehicle [9875.29,15991.3,300]
+av8 = "a10" createVehicle [9875.29,15791.3,300]
+su34 setdir 180
+av8 setdir 180
+su34 setpos [9875.29,12491.3,250]
+av8 setpos [9875.29,12691.3,250]
+"soldierE" createUnit [getpos usa ,grpUsa1,"this moveindriver av8"]
+su34 engineOn true
+av8 engineOn true
+driver av8 disableAI "move" 
+;player moveindriver su34
+
+#loop
+_i = _i + 1
+su34 setVelocity [0,_rychlost,1]
+av8 setVelocity [0,_rychlost,1]
+~0.1
+? _i == 140 : goto "next"
+goto "loop"
+
+#next
+_i = _i +1
+av8 setVelocity [0,_rychlost,1]
+su34 setdammage 0.7
+? _i == 300 : deletevehicle su34; deletevehicle av8; exit
+~0.1
+goto "next"
+
+;["R73Launcher","S8Launcher","GSh301"]
+
+; su34 fire "GSh301"
+; su34 fire "R73Launcher"
+; su34 fire "S8Launcher"
+
+;av8 fire "SidewinderLaucher"
+;av8 fire "BombLauncher"
+

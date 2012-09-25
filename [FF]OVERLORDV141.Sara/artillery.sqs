@@ -1,0 +1,67 @@
+
+;-------- artillery for task 11 ------------------
+
+~60
+;-----POZICIE------------
+; Paraiso = _x = 10587 _y = 9455
+; Letisko = _x = 9732 _y = 9944
+
+[resistance,"HQ"] sideChat "***** Russians artillery start bombarding our airport !!! *****"
+
+;-----------SERVER--------------------
+? not local server :goto "konec"
+
+_rozptyl= 250
+_typ= "Sh_120_HE"
+_x = 9732
+_y = 9944
+
+
+_i = 0
+
+#loop
+_i = _i + 1 
+? _i == 30 : goto "dobyt"
+~25
+delo1 Fire "d30"
+~3
+? alive gunner delo1 : _typ createvehicle [(_x) + (random _rozptyl) - (_rozptyl/2),(_y) + (random _rozptyl) - (_rozptyl/2),100]
+~1
+delo2 Fire "d30"
+~3
+? alive gunner delo2 : _typ createvehicle [(_x) + (random _rozptyl) - (_rozptyl/2),(_y) + (random _rozptyl) - (_rozptyl/2),100]
+~1
+delo3 Fire "d30"
+~3
+? alive gunner delo3 : _typ createvehicle [(_x) + (random _rozptyl) - (_rozptyl/2),(_y) + (random _rozptyl) - (_rozptyl/2),100]
+~1
+delo4 Fire "d30"
+~3
+? alive gunner delo4 : _typ createvehicle [(_x) + (random _rozptyl) - (_rozptyl/2),(_y) + (random _rozptyl) - (_rozptyl/2),100]
+~1
+delo5 Fire "d30"
+~3
+? alive gunner delo5 : _typ createvehicle [(_x) + (random _rozptyl) - (_rozptyl/2),(_y) + (random _rozptyl) - (_rozptyl/2),100]
+~1
+delo6 Fire "d30"
+~3
+? alive gunner delo6 : _typ createvehicle [(_x) + (random _rozptyl) - (_rozptyl/2),(_y) + (random _rozptyl) - (_rozptyl/2),100]
+
+?status11 == "done" : exit
+
+goto "loop"
+
+#dobyt
+_i = 0
+delo1 addmagazine "30Rnd_122mmHE_D30"
+delo2 addmagazine "30Rnd_122mmHE_D30"
+delo3 addmagazine "30Rnd_122mmHE_D30"
+delo4 addmagazine "30Rnd_122mmHE_D30"
+delo5 addmagazine "30Rnd_122mmHE_D30"
+delo6 addmagazine "30Rnd_122mmHE_D30"
+
+goto "loop"
+
+;-------------GLOBAL-----------------
+#konec
+exit

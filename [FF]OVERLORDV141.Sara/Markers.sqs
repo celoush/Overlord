@@ -1,0 +1,161 @@
+;*******************************************************************************************************
+;*********************************** by FriZY & Faust **************************************************
+;*******************************************************************************************************
+
+? !(local server):exit
+
+;**********  name of markers ****************************
+_units=["a1","a2","a3","a4","a5","a6","a7","a8","a9","a10","a11","a12","a13","a14","a15","a16","a17","a18","a19","a20","a21","a22","a23","a24","a25","a26","p4","p1","p2","p3","hq1"]
+
+;********** Rangers **************************
+_pocet = count _units
+_typ = "dot"
+_color = "ColorBlue"
+_i = -1
+
+#create
+_i = _i + 1
+_znacka = _units select _i
+createMarker [_znacka, [0,0] ]
+
+? _znacka in ["p4","p1","p2","p3"] : _color = "ColorBlack"
+
+_znacka setMarkerColor _color
+_znacka setMarkerType _typ
+_znacka setMarkerSize [0.5, 0.5]
+? _i < _pocet - 1 : goto "create"
+_i=-1
+
+#loop
+~1
+_menoa1 = name a1 
+_menoa2 = name a2 
+_menoa3 = name a3
+_menoa4 = name a4 
+_menoa5 = name a5 
+_menoa6 = name a6
+_menoa7 = name a7 
+_menoa8 = name a8 
+_menoa9 = name a9
+_menoa10 = name a10 
+_menoa11 = name a11 
+_menoa12 = name a12
+_menoa13 = name a13 
+_menoa14 = name a14 
+_menoa15 = name a15
+_menoa16 = name a16 
+_menoa17 = name a17 
+_menoa18 = name a18
+_menoa19 = name a19 
+_menoa20 = name a20 
+_menoa21 = name a21 
+_menoa22 = name a22
+_menoa23 = name a23 
+_menoa24 = name a24 
+_menoa25 = name a25
+_menoa26 = name a26
+_menoa27 = name p4
+_menoa28 = name p1 
+_menoa29 = name p2 
+_menoa30 = name p3
+_menoa31 = name hq1
+
+~1
+?isplayer a1: "a1" SetMarkerPos [GetPos a1 select 0, GetPos a1 select 1]
+?isplayer a2: "a2" setmarkerpos [GetPos a2 select 0, GetPos a2 select 1]
+?isplayer a3: "a3" setmarkerpos [GetPos a3 select 0, GetPos a3 select 1]
+?isplayer a4: "a4" SetMarkerPos [GetPos a4 select 0, GetPos a4 select 1]
+?isplayer a5: "a5" setmarkerpos [GetPos a5 select 0, GetPos a5 select 1]
+?isplayer a6: "a6" setmarkerpos [GetPos a6 select 0, GetPos a6 select 1]
+?isplayer a7: "a7" SetMarkerPos [GetPos a7 select 0, GetPos a7 select 1]
+?isplayer a8: "a8" setmarkerpos [GetPos a8 select 0, GetPos a8 select 1]
+?isplayer a9: "a9" setmarkerpos [GetPos a9 select 0, GetPos a9 select 1]
+?isplayer a10:"a10" SetMarkerPos [GetPos a10 select 0, GetPos a10 select 1]
+?isplayer a11:"a11" setmarkerpos [GetPos a11 select 0, GetPos a11 select 1]
+?isplayer a12:"a12" setmarkerpos [GetPos a12 select 0, GetPos a12 select 1]
+?isplayer a13:"a13" SetMarkerPos [GetPos a13 select 0, GetPos a13 select 1]
+?isplayer a14:"a14" setmarkerpos [GetPos a14 select 0, GetPos a14 select 1]
+?isplayer a15:"a15" setmarkerpos [GetPos a15 select 0, GetPos a15 select 1]
+?isplayer a16:"a16" SetMarkerPos [GetPos a16 select 0, GetPos a16 select 1]
+?isplayer a17:"a17" setmarkerpos [GetPos a17 select 0, GetPos a17 select 1]
+?isplayer a18:"a18" setmarkerpos [GetPos a18 select 0, GetPos a18 select 1]
+?isplayer a19:"a19" SetMarkerPos [GetPos a19 select 0, GetPos a19 select 1]
+?isplayer a20:"a20" setmarkerpos [GetPos a20 select 0, GetPos a20 select 1]
+?isplayer a21:"a21" setmarkerpos [GetPos a21 select 0, GetPos a21 select 1]
+?isplayer a22:"a22" setmarkerpos [GetPos a22 select 0, GetPos a22 select 1]
+?isplayer a23:"a23" SetMarkerPos [GetPos a23 select 0, GetPos a23 select 1]
+?isplayer a24:"a24" setmarkerpos [GetPos a24 select 0, GetPos a24 select 1]
+?isplayer a25:"a25" setmarkerpos [GetPos a25 select 0, GetPos a25 select 1]
+?isplayer a26:"a26" SetMarkerPos [GetPos a26 select 0, GetPos a26 select 1]
+?isplayer  p4: "p4" setmarkerpos [GetPos p4 select 0, GetPos p4 select 1]
+?isplayer  p1: "p1" setmarkerpos [GetPos p1 select 0, GetPos p1 select 1]
+?isplayer  p2: "p2" SetMarkerPos [GetPos p2 select 0, GetPos p2 select 1]
+?isplayer  p3: "p3" setmarkerpos [GetPos p3 select 0, GetPos p3 select 1]
+?isplayer  hq1: "hq1" setmarkerpos [GetPos hq1 select 0, GetPos hq1 select 1]
+
+
+~1
+?(!isplayer a1 or !alive a1) : "a1" SetMarkerPos [0,0]
+?(!isplayer a2 or !alive a2) : "a2" setmarkerpos [0,0]
+?(!isplayer a3 or !alive a3) : "a3" setmarkerpos [0,0]
+?(!isplayer a4 or !alive a4) : "a4" SetMarkerPos [0,0]
+?(!isplayer a5 or !alive a5) : "a5" setmarkerpos [0,0]
+?(!isplayer a6 or !alive a6) : "a6" setmarkerpos [0,0]
+?(!isplayer a7 or !alive a7) : "a7" SetMarkerPos [0,0]
+?(!isplayer a8 or !alive a8) : "a8" setmarkerpos [0,0]
+?(!isplayer a9 or !alive a9) : "a9" setmarkerpos [0,0]
+?(!isplayer a10 or !alive a10) : "a10" SetMarkerPos [0,0]
+?(!isplayer a11 or !alive a11) : "a11" setmarkerpos [0,0]
+?(!isplayer a12 or !alive a12) : "a12" setmarkerpos [0,0]
+?(!isplayer a13 or !alive a13) : "a13" SetMarkerPos [0,0]
+?(!isplayer a14 or !alive a14) : "a14" setmarkerpos [0,0]
+?(!isplayer a15 or !alive a15) : "a15" setmarkerpos [0,0]
+?(!isplayer a16 or !alive a16) : "a16" SetMarkerPos [0,0]
+?(!isplayer a17 or !alive a17) : "a17" setmarkerpos [0,0]
+?(!isplayer a18 or !alive a18) : "a18" setmarkerpos [0,0]
+?(!isplayer a19 or !alive a19) : "a19" SetMarkerPos [0,0]
+?(!isplayer a20 or !alive a20) : "a20" setmarkerpos [0,0]
+?(!isplayer a21 or !alive a21) : "a21" setmarkerpos [0,0]
+?(!isplayer a22 or !alive a22) : "a22" setmarkerpos [0,0]
+?(!isplayer a23 or !alive a23) : "a23" SetMarkerPos [0,0]
+?(!isplayer a24 or !alive a24) : "a24" setmarkerpos [0,0]
+?(!isplayer a25 or !alive a25) : "a25" setmarkerpos [0,0]
+?(!isplayer a26 or !alive a26) : "a26" SetMarkerPos [0,0]
+?(!isplayer p4 or !alive p4) : "p4" setmarkerpos [0,0]
+?(!isplayer p1 or !alive ap1) : "p1" setmarkerpos [0,0]
+?(!isplayer p2 or !alive p2) : "p2" SetMarkerPos [0,0]
+?(!isplayer p3 or !alive a3) : "p3" setmarkerpos [0,0]
+?(!isplayer hq1 or !alive hq1) : "hq1" setmarkerpos [0,0]
+
+"a1" setmarkertext _menoa1
+"a2" setmarkertext _menoa2
+"a3" setmarkertext _menoa3
+"a4" setmarkertext _menoa4
+"a5" setmarkertext _menoa5
+"a6" setmarkertext _menoa6
+"a7" setmarkertext _menoa7
+"a8" setmarkertext _menoa8
+"a9" setmarkertext _menoa9
+"a10" setmarkertext _menoa10
+"a11" setmarkertext _menoa11
+"a12" setmarkertext _menoa12
+"a13" setmarkertext _menoa13
+"a14" setmarkertext _menoa14
+"a15" setmarkertext _menoa15
+"a16" setmarkertext _menoa16
+"a17" setmarkertext _menoa17
+"a18" setmarkertext _menoa18
+"a19" setmarkertext _menoa19
+"a20" setmarkertext _menoa20
+"a21" setmarkertext _menoa21
+"a22" setmarkertext _menoa22
+"a23" setmarkertext _menoa23
+"a24" setmarkertext _menoa24
+"a25" setmarkertext _menoa25
+"a26" setmarkertext _menoa26
+"p4" setmarkertext _menoa27
+"p1" setmarkertext _menoa28
+"p2" setmarkertext _menoa29
+"p3" setmarkertext _menoa30
+"hq1" setmarkertext _menoa31
+goto "loop"

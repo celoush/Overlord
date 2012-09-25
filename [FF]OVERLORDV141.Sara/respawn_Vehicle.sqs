@@ -1,0 +1,75 @@
+;-----------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------
+;------------------------------|                           |------------------------------------------------
+;------------------------------| RESPAWN VEHICLE by FriZY  |------------------------------------------------
+;------------------------------|                           |------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------
+
+? not local server : exit
+
+_vehicle = _this select 0
+_respawnDelay = _this select 1
+_emptyInit = 300
+_startpos = getpos _vehicle
+_typ = typeOf (_this select 0)
+_dir = getDir (_this select 0) 
+
+;--------------------- USED VEHICLE ??? ---------------------------------------
+@ (count crew _vehicle > 0) or (!canmove _vehicle) 
+;------------------------------------------------------------------------------
+
+
+
+;--------------------- CHECK OUT ----------------------------------------------
+#loop
+@ count crew _vehicle == 0 or !canmove _vehicle 
+? !alive _vehicle : goto "deleteDelay"
+? count crew _vehicle == 0 :  goto "emptyVehicle"		
+? !canmove _vehicle : goto "dammageVehicle"
+;-------------------------------------------------------------------------------
+
+
+;------------------------- EMPTY  ----------------------------------------------
+#emptyVehicle
+ _timeEmpty = time + _emptyInit
+@ count crew _vehicle > 0 or _timeEmpty < time or !canmove _vehicle
+? count crew _vehicle > 0 :  goto "loop"
+? _timeEmpty < time :  goto "delete"
+? !alive _vehicle : goto "deleteDelay"
+? !canmove _vehicle :  goto "deletecheck"
+;--------------------------------------------------------------------------------
+
+
+;------------------- USED / DAMAGE /  -------------------------------------------
+#dammageVehicle
+@ count crew _vehicle == 0 or !alive _vehicle
+? !alive _vehicle :  goto "deleteDelay"
+? canMove _vehicle : goto "emptyVehicle"
+? count crew _vehicle == 0 : goto "deletecheck"
+;--------------------------------------------------------------------------------
+
+
+;----------------- DELETE VEHICLE -----------------------------------------------
+#deletecheck
+_timeRespawnDelay = time + _respawnDelay
+@ _timeRespawnDelay < time or count crew _vehicle > 0
+? count crew _vehicle > 0 : goto "loop"
+? canmove _vehicle :  goto "emptyVehicle"
+goto "delete"
+
+#deleteDelay
+~ _respawnDelay
+
+#delete
+deleteVehicle _vehicle 
+
+~1
+_new  = _typ createVehicle [_startpos select 0, _startpos select 1,0]
+_new setDir _dir
+_new setVelocity [0,0,0]
+[_new,_respawndelay] exec "respawn_Vehicle.sqs"
+;--------------------------------------------------------------------------------
+
+exit

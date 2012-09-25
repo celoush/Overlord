@@ -1,0 +1,183 @@
+
+;-------- TASK 3 (CONVOY,primary) ------------------
+
+~25
+[resistance,"HQ"] sideChat " ***** Support trucks are at harbour in Corazol and ready for transport ***** "
+[west,"HQ"] sideChat " ***** Support trucks are at harbour in Corazol and ready for transport ***** "
+~5
+player say "telegraph"
+"3"objStatus "ACTIVE" 
+~1
+hint "BRING 3 SUPPORT TRUCKS TO AIRPORT"
+[resistance,"HQ"] sideChat " ***** New primary mission: ***** "
+[west,"HQ"] sideChat " ***** New primary mission: ***** "
+~1
+[resistance,"HQ"] sideChat " ***** BRING SUPPORT TRUCKS TO AIRPORT ***** "
+[west,"HQ"] sideChat " ***** BRING SUPPORT TRUCKS TO AIRPORT ***** "
+"task3" setMarkerPos [13235,9115]
+"AIRPORT2" setMarkerPos getpos AirportBase
+"corazol" setmarkercolor "colorRed"
+
+[]exec "corazol.sqs"
+
+;-----------SERVER--------------------
+? not local server :goto "next"
+
+kopec1 = createGroup east
+kopec2 = createGroup east
+kopec3 = createGroup east
+kopec4 = createGroup east
+kopec5 = createGroup east
+inCorazol1 = createGroup east
+inCorazol2 = createGroup east
+inCorazol3 = createGroup east
+inCorazol4 = createGroup east
+inCorazol5 = createGroup east
+inCorazol6 = createGroup east
+inCorazol7 = createGroup east
+inCorazol8 = createGroup east
+
+_i = 0
+_truck1IN = false
+_truck2IN = false
+_truck3IN = false
+_truck4IN = false
+_truck5IN = false
+_truck6IN = false
+
+truck1 = "Truck5tRepair" createVehicle [13235,9115,0.1]
+~0.5
+truck2 = "Truck5tReammo" createVehicle [13245,9115,0]
+~0.5
+truck3 = "Truck5tRefuel" createVehicle [13255,9115,0]
+~0.5
+truck4 = "Truck5tRepair" createVehicle [13295,9115,0]
+~0.5
+truck5 = "Truck5tRefuel" createVehicle [13275,9115,0]
+~0.5
+truck6 = "Truck5tReammo" createVehicle [13285,9115,0]
+~0.5
+"hmmwv50" createVehicle [13260,9130,0]
+~0.5
+"hmmwv50" createVehicle [13265,9130,0]
+~0.5
+
+;----------------RUSI------------------------------
+"soldierEB" createUnit [[12694,8794,0.01],kopec4]
+"soldierEB" createUnit [[12694,8799,0.01],kopec4]
+"soldierE" createUnit [[12691,8801,0.01],kopec4]
+
+
+;----------------Nahodne---------------------------
+_X = random 3
+_X = round _X
+? _X == 0 : _kde = [12292,9620.19,0.00150681]
+? _X == 1 : _kde = [12178.4,9716.26,0.00152779]
+? _X == 2 : _kde = [11936.1,9976.41,0.00145149]
+? _X == 3 : _kde = [11765.6,10207.6,0.00133514]
+
+"soldierEB" createUnit [_kde,kopec5]
+"soldierEB" createUnit [_kde,kopec5]
+"soldierE" createUnit [_kde,kopec5]
+
+;-----------------in corazol -------------------------
+"soldierEB" createUnit [[13277.9,9146.08,0.00139046],inCorazol1,"cor1=this"]
+"soldierEMG" createUnit [[13279.9,9146.08,0.00139046],inCorazol1]
+"soldierEAA" createUnit [[13275.9,9146.08,0.00139046],inCorazol1]
+"soldierEB" createUnit [[13279.9,9146.08,0.00139046],inCorazol1]
+"soldierEB" createUnit [[13275.9,9146.08,0.00139046],inCorazol1]
+
+"soldierEB" createUnit [[13335.3,9161.23,0.0011487],inCorazol2,"cor2=this"]
+"soldierEMG" createUnit [[13335.3,9163.23,0.0011487],inCorazol2]
+"soldierEAT" createUnit [[13335.3,9165.23,0.0011487],inCorazol2]
+
+"soldierEB" createUnit [[13641,9099.28,0.00137711],inCorazol3,"cor3=this"]
+"soldierEMG" createUnit [[13641,9099.28,0.00137711],inCorazol3]
+"soldierEAT" createUnit [[13641,9099.28,0.00137711],inCorazol3]
+
+"soldierEB" createUnit [[13574.9,8989.88,0.00137711],inCorazol4,"cor4=this"]
+"soldierEMG" createUnit [[13574.9,8989.88,0.00137711],inCorazol4]
+"soldierEAT" createUnit [[13574.9,8989.88,0.00137711],inCorazol4]
+
+"soldierEB" createUnit [[13190.2,8847.96,0.0012989],inCorazol8,"cor8=this"]
+"soldierEMG" createUnit [[13190.2,8847.96,0.0012989],inCorazol8]
+"soldierEAT" createUnit [[13190.2,8847.96,0.0012989],inCorazol8]
+
+"soldierEB" createUnit [[13253.6,8978.92,0.00149632],inCorazol5,"cor5=this"]
+"soldierEMG" createUnit [[13253.6,8978.92,0.00149632],inCorazol5]
+"soldierEAT" createUnit [[13253.6,8978.92,0.00149632],inCorazol5]
+
+"soldierEB" createUnit [[12965.9,8847.02,0.00137711],inCorazol6,"cor6=this"]
+"soldierEB" createUnit [[12965.9,8847.02,0.00137711],inCorazol6]
+"soldierEAT" createUnit [[12965.9,8847.02,0.00137711],inCorazol6]
+
+"soldierEAA" createUnit [[13050.4,8967.19,0.00143909],inCorazol7,"cor7=this"]
+"soldierEB" createUnit [[13050.4,8967.19,0.00143909],inCorazol7]
+"soldierEAT" createUnit [[13050.4,8967.19,0.00143909],inCorazol7]
+
+
+{_x execVM "soldierwalkguard.sqf"} forEach [cor1,cor4,cor6,cor7,cor8]
+
+;------------NA kopci -----
+
+"soldierEB" createUnit [ [12381,9510.71,0.0032196],kopec1]
+"soldierEMG" createUnit [ [12376,9510.71,0.0032196],kopec1]
+
+"soldierEAT" createUnit [ [11993.5,9871.21,0.0018692],kopec2]
+"soldierEB" createUnit [ [11991.5,9871.21,0.0018692],kopec2]
+
+"soldierEAT" createUnit [ [11730.6,10177.3,0.00241089],kopec3]
+"soldierEAA" createUnit [ [11728.6,10177.3,0.00241089],kopec3]
+;--------------------------
+
+[] exec "Markers_truck.sqs"
+
+#skok
+? {_x distance airportbase < 400} count [truck1,truck2,truck3,truck4,truck5,truck6] > 2 : status3 = "DONE"; publicvariable "status3";goto "next"
+
+? {!alive _x} count [truck1,truck2,truck3,truck4,truck5,truck6] > 3 : status3 = "FAILED" ;publicvariable "status3";goto "next"
+~3
+goto "skok"
+~2
+
+;---------------- GLOBAL ------------------------------------------------
+#next
+@status3 == "DONE" or status3 == "FAILED"
+
+~3
+? status3 == "DONE" : [resistance,"HQ"] sideChat " ***** OK, we have support trucks at airport ***** ";"3"objStatus "HIDDEN" ;titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2];playsound "fanfare"
+
+? status3 == "FAILED" : [resistance,"HQ"] sideChat " ***** Oh no! We have not enough support trucks ***** ";"3"objStatus "HIDDEN";titleText ["M I S S I O N   F A I L E D ","PLAIN",2]
+
+#konec
+"task3" setMarkerPos [0,0]
+"AIRPORT2" setMarkerPos [0,0]
+~300
+{_x setdammage 1}foreach units Kopec1
+{_x setdammage 1}foreach units Kopec2
+{_x setdammage 1}foreach units Kopec3
+{_x setdammage 1}foreach units Kopec4
+{_x setdammage 1}foreach units Kopec5
+{_x setdammage 1}foreach units inCorazol1 
+{_x setdammage 1}foreach units inCorazol2
+{_x setdammage 1}foreach units inCorazol3 
+{_x setdammage 1}foreach units inCorazol4 
+{_x setdammage 1}foreach units inCorazol5 
+{_x setdammage 1}foreach units inCorazol6
+{_x setdammage 1}foreach units inCorazol7 
+{_x setdammage 1}foreach units inCorazol8 
+~2
+deletegroup kopec1
+deletegroup kopec2
+deletegroup kopec3
+deletegroup kopec4
+deletegroup kopec5
+deletegroup inCorazol1 
+deletegroup inCorazol2 
+deletegroup inCorazol3 
+deletegroup inCorazol4 
+deletegroup inCorazol5 
+deletegroup inCorazol6 
+deletegroup inCorazol7 
+deletegroup inCorazol8
+exit 

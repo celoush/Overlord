@@ -1,0 +1,119 @@
+
+? player == a1 or player == a2 or player == a3 or player == a4 or player == a5 or player == a6 or player == a7 or player == p1 : goto "alfa"
+
+? player == a21 or player == a22 or player == a23 or player == a24 or player == a25 or player == a26 or player == p4 : goto "bravo"
+
+? player == a15 or player == a16 or player == a17 or player == a18 or player == a19 or player == a20 or  player == p3 : goto "charlie"
+
+? player == a8 or player == a9 or player == a10 or player == a11 or player == a12 or player == a13 or player == a14 or player == p2 : goto "delta"
+
+;--------------------------------ALFA-------------------------------------------------
+#alfa
+
+_sol1 = name a1
+_sol2 = name a2
+_sol3 = name a3
+_sol4 = name a4
+_sol5 = name a5
+_sol6 = name a6
+_sol7 = name a7
+_pil1 = name p1
+
+? !isPlayer a1 : _sol1 = "---"
+? !isPlayer a2 : _sol2 = "---"
+? !isPlayer a3 : _sol3 = "---"
+? !isPlayer a4 : _sol4 = "---"
+? !isPlayer a5 : _sol5 = "---"
+? !isPlayer a6 : _sol6 = "---"
+? !isPlayer a7 : _sol7 = "---"
+? !isPlayer p1 : _pil1 = "---"
+
+_team = "ALPHA TEAM"
+
+goto "show1"
+
+;--------------------------------BRAVO-------------------------------------------------
+#bravo
+
+_sol1 = name a21
+_sol2 = name a22
+_sol3 = name a23
+_sol4 = name a24
+_sol5 = name a25
+_sol6 = name a26
+_pil1 = name p4
+
+? !isPlayer a21 : _sol1 = "---"
+? !isPlayer a22 : _sol2 = "---"
+? !isPlayer a23 : _sol3 = "---"
+? !isPlayer a24 : _sol4 = "---"
+? !isPlayer a25 : _sol5 = "---"
+? !isPlayer a26 : _sol6 = "---"
+? !isPlayer p1 : _pil1 = "---"
+
+_team = "BRAVO TEAM"
+
+goto "show2"
+
+;--------------------------------CHARLIE-------------------------------------------------
+#charlie
+
+_sol1 = name a15
+_sol2 = name a16
+_sol3 = name a17
+_sol4 = name a18
+_sol5 = name a19
+_sol6 = name a20
+_pil1 = name p3
+
+? !isPlayer a15 : _sol1 = "---"
+? !isPlayer a16 : _sol2 = "---"
+? !isPlayer a17 : _sol3 = "---"
+? !isPlayer a18 : _sol4 = "---"
+? !isPlayer a19 : _sol5 = "---"
+? !isPlayer a20 : _sol6 = "---"
+? !isPlayer p3 : _pil1 = "---"
+
+_team = "CHARLIE TEAM"
+
+goto "show2"
+
+;--------------------------------DELTA-------------------------------------------------
+#delta
+
+_sol1 = name a8
+_sol2 = name a9
+_sol3 = name a10
+_sol4 = name a11
+_sol5 = name a12
+_sol6 = name a13
+_sol7 = name a14
+_pil1 = name p2
+
+? !isPlayer a8 : _sol1 = "---"
+? !isPlayer a9 : _sol2 = "---"
+? !isPlayer a10 : _sol3 = "---"
+? !isPlayer a11 : _sol4 = "---"
+? !isPlayer a12 : _sol5 = "---"
+? !isPlayer a13 : _sol6 = "---"
+? !isPlayer a14 : _sol7 = "---"
+? !isPlayer p2 : _pil1 = "---"
+
+_team = "DELTA TEAM"
+
+goto "show1"
+;--------------------------------SHOW 1-------------------------------------------------
+#show1
+
+hint  format ["*****%9***** \n\nLeader: %1 \nPilot: %8 \nMedic: %2 \n\nSoldier: %3 \nSoldier: %4 \nSoldier: %5 \nSoldier: %6 \nSoldier: %7", _sol1,_sol2,_sol3,_sol4,_sol5,_sol6,_sol7,_pil1,_team] 
+
+
+exit
+
+;--------------------------------SHOW 2-------------------------------------------------
+#show2
+
+hint  format ["*****%8***** \n\nLeader: %1 \nPilot: %7 \nMedic: %2 \n\nSoldier: %3 \nSoldier: %4 \nSoldier: %5 \nSoldier: %6", _sol1,_sol2,_sol3,_sol4,_sol5,_sol6,_pil1,_team] 
+
+
+exit

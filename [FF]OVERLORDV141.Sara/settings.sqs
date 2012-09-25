@@ -1,0 +1,123 @@
+~1
+? Status9 != "Done" and Status9 != "FAILED" :[] exec "task9.sqs"
+? Status10 != "Done" and Status10 != "FAILED" :[] exec "task10.sqs"
+? Status11 != "Done" :[]exec "task11.sqs"
+
+;-------- TASK 1 (AIRPORT,primary) ------------------
+? Status1 != "None" : goto "task2"
+[] exec "task1.sqs"
+
+
+;********************************************************************************
+
+;-------- TASK 2 (DEALER,secondary) ------------------
+#task2
+? Status2 != "None" : goto "task3"
+[] exec "task2.sqs"
+
+;********************************************************************************
+
+;-------- TASK 3 (CONVOY,primary) ------------------
+#task3
+@status1 == "DONE"
+"Respawn_guerrila" setMarkerPos [9600.94,9955.65]
+? Status3 != "None" : goto "task4"
+[] exec "task3.sqs"
+@(status3 == "DONE" or status3 == "FAILED")
+;********************************************************************************
+
+;-------- TASK 4 (HOTEL,secondary) ------------------
+#task4
+? Status4 != "None" : goto "task5"
+[] exec "task4.sqs"
+;********************************************************************************
+
+;-------- TASK 5 (DEFEND AIRPORT,primary) ------------------
+#task5
+? Status5 != "None" : goto "task6"
+[] exec "task5.sqs"
+
+;********************************************************************************
+
+;-------- TASK 6 (CAPTURE SOMATO,primary) ------------------
+
+#task6
+@(status5 == "DONE" or status5 == "FAILED")
+? Status6 != "None" : goto "task7"
+[] exec "task6.sqs"
+
+;********************************************************************************
+
+;-------- TASK 7 (DESTROY TANKS,secondary) ------------------
+#task7
+? Status7 != "None" : goto "task12"
+[] exec "task7.sqs"
+@status6 == "DONE" 
+
+;********************************************************************************
+
+;-------- TASK 12 (CAPTURE CAYO,primary) ------------------
+#task12
+? Status12 != "None" : goto "task8"
+[] exec "task12.sqs"
+@status12 == "DONE" 
+
+;********************************************************************************
+
+;-------- TASK 8 (CAPTURE ORTEGO,primary) ------------------
+#task8
+? Status13 == "None" : [] exec "task13.sqs"
+? Status8 != "None" : goto "task14"
+[] exec "task8.sqs"
+@status8 == "DONE" 
+;********************************************************************************
+
+;-------- TASK 14 (DEFEND ORTEGO,primary) ------------------
+#task14
+[]exec "task14.sqs"
+
+
+;-----------WAIT FOR PRIMARY MISSIONS ---------------------
+@status1 != "NONE" 
+@status3 != "NONE" 
+@status5 != "NONE" 
+@status6 != "NONE" 
+@status8 != "NONE" 
+@status12 != "NONE" 
+@status14 != "NONE" 
+
+
+;--------------------------------------------------------------------------------
+;********************** GAME OVER ***********************************************
+;--------------------------------------------------------------------------------
+
+? Status1 == "DONE" :  "1"objStatus "DONE" 
+? Status2 == "DONE" :  "2"objStatus "DONE" 
+? Status3 == "DONE" :  "3"objStatus "DONE" 
+? Status4 == "DONE" :  "4"objStatus "DONE" 
+? Status5 == "DONE" :  "5"objStatus "DONE" 
+? Status6 == "DONE" :  "6"objStatus "DONE" 
+? Status7 == "DONE" :  "7"objStatus "DONE" 
+? Status8 == "DONE" :  "8"objStatus "DONE" 
+? Status9 == "DONE" :  "9"objStatus "DONE" 
+? Status10 == "DONE" :  "10"objStatus "DONE" 
+? Status11 == "DONE" :  "11"objStatus "DONE" 
+? Status12 == "DONE" :  "12"objStatus "DONE" 
+? Status13 == "DONE" :  "13"objStatus "DONE"
+? Status14 == "DONE" :  "14"objStatus "DONE"
+
+? Status3 == "FAILED" : "3"objStatus "FAILED" 
+? Status4 == "FAILED" : "4"objStatus "FAILED" 
+? Status5 == "FAILED" : "5"objStatus "FAILED" 
+? Status7 == "FAILED" : "7"objStatus "FAILED" 
+? Status9 == "FAILED" : "9"objStatus "FAILED" 
+? Status10 == "FAILED" : "10"objStatus "FAILED" 
+? Status13 == "FAILED" : "13"objStatus "FAILED" 
+
+~25
+titleText [" ***** O P E R A T I O N     O V E R L O R D ***** \n\n C O M P L E T E D ","PLAIN",2]
+player say "win"
+~12
+END= true
+
+exit

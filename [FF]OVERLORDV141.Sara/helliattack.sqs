@@ -1,0 +1,14 @@
+#create
+~30
+chop1 = "ka50" createvehicle [16586,4722.61,0.00140572]
+chop2 = "ka50" createvehicle [16610,4722.61,0.00140572]
+
+
+"soldierEPilot" createunit [[16586,4722.61,0.00140572], corazolGroup9  ,"this moveindriver chop1 "]
+"soldierEPilot" createunit [[16610,4722.61,0.00140572], corazolGroup9  ,"this moveindriver chop2 "]
+
+corazolGroup9 addWaypoint [[12400.1,6817.61,0.00134659],50]
+
+@ !(alive chop1) and !(alive chop2)
+~300
+goto "create"

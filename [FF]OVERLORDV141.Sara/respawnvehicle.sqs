@@ -1,0 +1,30 @@
+? not local server : exit
+
+_respawndelay = _this select 1
+_direction = getDir (_this select 0) 
+_vehicle = _this select 0
+_startpos = getpos _vehicle
+_typ = typeOf (_this select 0)
+_i = 0
+
+#loop
+~ 30
+? (getdammage _vehicle > 0.95) : goto "respawn"
+? !(canMove _vehicle) : goto "respawn"
+? (fuel _vehicle == 0) : goto "respawn"
+goto "loop"
+
+
+#respawn
+~45
+? canMove _vehicle and fuel _vehicle > 0.3 : goto "loop"
+deleteVehicle (_this select 0)
+~0.5
+_new  = _typ createVehicle [_startpos select 0, _startpos select 1,0]
+_new setDir _direction
+_respawndelay = _this select 1
+[_new,_respawndelay] exec "respawnvehicle.sqs"
+exit
+
+
+

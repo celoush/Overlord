@@ -1,0 +1,22 @@
+? local server : timeleft = defendTime
+
+#server
+write = false
+;-----------SERVER--------------------
+? not local server :goto "skok"
+~60
+timeleft = timeleft - 60
+write = true
+
+publicvariable "timeLeft"
+publicvariable "write"
+
+
+#skok
+@write
+round timeleft
+hint format ["%1 min left",timeleft/60]
+? timeleft == 0 : exit
+? timeleft < 180 and local server : []exec "para.sqs"
+? local server : goto "server"
+goto "skok"

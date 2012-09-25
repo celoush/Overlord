@@ -1,0 +1,71 @@
+;*******************************************************************************************************
+;*********************************** by FriZY & Faust **************************************************
+;*******************************************************************************************************
+_typ = "marker"
+_color = "ColorBlue"
+_size  =  [0.3, 0.3]
+#create
+createMarker ["t1", [0,0] ]
+createMarker ["t2", [0,0] ]
+createMarker ["t3", [0,0] ]
+createMarker ["t4", [0,0] ]
+createMarker ["t5", [0,0] ]
+createMarker ["t6", [0,0] ]
+
+"t1" setMarkerColor _color
+"t1" setMarkerType _typ
+"t1" setMarkerSize _size
+"t1" setmarkertext "Repair"
+
+"t2" setMarkerColor _color
+"t2" setMarkerType _typ
+"t2" setMarkerSize _size
+"t2" setmarkertext "Ammo"
+
+"t3" setMarkerColor _color
+"t3" setMarkerType _typ
+"t3" setMarkerSize _size
+"t3" setmarkertext "Fuel"
+
+"t4" setMarkerColor _color
+"t4" setMarkerType _typ
+"t4" setMarkerSize _size
+"t4" setmarkertext "Repair"
+
+"t5" setMarkerColor _color
+"t5" setMarkerType _typ
+"t5" setMarkerSize _size
+"t5" setmarkertext "Fuel"
+
+"t6" setMarkerColor _color
+"t6" setMarkerType _typ
+"t6" setMarkerSize _size
+"t6" setmarkertext "Ammo"
+
+#loop
+~1
+"t1" SetMarkerPos [GetPos truck1 select 0, GetPos truck1 select 1]
+"t2" SetMarkerPos [GetPos truck2 select 0, GetPos truck2 select 1]
+"t3" SetMarkerPos [GetPos truck3 select 0, GetPos truck3 select 1]
+~1
+"t4" SetMarkerPos [GetPos truck4 select 0, GetPos truck4 select 1]
+"t5" SetMarkerPos [GetPos truck5 select 0, GetPos truck5 select 1]
+"t6" SetMarkerPos [GetPos truck6 select 0, GetPos truck6 select 1]
+? status3 == "DONE" or status5 == "FAILED" : goto "next"
+
+goto "loop"
+
+#next
+"t1" SetMarkerPos [0,0]
+"t2" SetMarkerPos [0,0]
+"t3" SetMarkerPos [0,0]
+"t4" SetMarkerPos [0,0]
+"t5" SetMarkerPos [0,0]
+"t6" SetMarkerPos [0,0]
+ exit
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+_sol1 = name p1
+_sol2 = name p2
+_sol3 = name p3
+_sol4 = name p4
+_sol5 = name a2
+_sol6 = name a9
+_sol7 = name a16
+_sol8 = name a22
+
+? !isPlayer p1 : _sol1 = "---"
+? !isPlayer p2 : _sol2 = "---"
+? !isPlayer p3 : _sol3 = "---"
+? !isPlayer p4 : _sol4 = "---"
+? !isPlayer a2 : _sol5 = "---"
+? !isPlayer a9 : _sol6 = "---"
+? !isPlayer a16 : _sol7 = "---"
+? !isPlayer a22 : _sol8 = "---"
+
+
+hint  format ["Pilot: %1 \nPilot: %4 \nPilot: %3 \nPilot: %2 \n\nMedic: %5 \nMedic: %8 \nMedic: %7 \nMedic: %6", _sol1,_sol2,_sol3,_sol4,_sol5,_sol6,_sol7,_sol8] 
+
+
+exit

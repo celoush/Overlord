@@ -1,0 +1,9 @@
+
+;-------- Plans founded ------------------
+@plans
+~6
+[resistance,"HQ"] sideChat format["***** Good job, %1 has found plans for chemical weapon *****",menoplans]
+~1
+[resistance,"HQ"] sideChat format["***** We have to cut %1 cable *****",cable]
+exit
+

@@ -1,0 +1,91 @@
+
+;-------- TASK 5 (DEFEND AIRPORT,primary) ------------------
+
+~ 20
+[resistance,"HQ"] sideChat "***** Russians choppers are comming to airport. Prepare!!! *****"
+[west,"HQ"] sideChat "***** Russians choppers are comming to airport. Prepare!!! *****"
+~ 5
+player say "telegraph"
+"5"objStatus "ACTIVE" 
+[resistance,"HQ"] sideChat "***** New primary mission: *****"
+[west,"HQ"] sideChat "***** New primary mission: *****"
+~1
+hint "Help US Army to defend airport"
+[resistance,"HQ"] sideChat "***** Help US Army to defend airport *****"
+[west,"HQ"] sideChat "***** Help US Army to defend airport *****"
+
+"kamovAttack" setMarkerpos [10266,10898]
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+grpkamov = createGroup east
+
+abrams1 doMove [9635.59,9945]
+abrams2 doMove [9915.25,9968.65]
+abrams3 doMove [9859.58,10085.5]
+vulcan1 doMove [9960.39,10069.5]
+vulcan2 doMove [9578.01,9991.7]
+
+~5
+;-------------KAMOV1------------------------------------------------------
+kamov1 = "ka50" createVehicle [12450.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov1"]
+kamov1 doMove getpos airportBase
+~10
+;-------------KAMOV2------------------------------------------------------
+kamov2 = "ka50" createVehicle [12470.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov2"]
+kamov2 doMove getpos airportBase
+~10
+;-------------KAMOV3------------------------------------------------------
+kamov3 = "ka50" createVehicle [12490.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov3"]
+kamov3 doMove getpos airportBase
+~10
+;-------------KAMOV4------------------------------------------------------
+kamov4 = "ka50" createVehicle [12510.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov4"]
+kamov4 doMove getpos airportBase
+~10
+;-------------KAMOV5------------------------------------------------------
+kamov5 = "ka50" createVehicle [12530.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov5"]
+kamov5 doMove getpos airportBase
+~10
+;-------------KAMOV6------------------------------------------------------
+kamov6 = "ka50" createVehicle [12550.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov6"]
+kamov6 doMove getpos airportBase
+~10
+;-------------KAMOV7------------------------------------------------------
+kamov7 = "ka50" createVehicle [12570.9,14759.5,0.01]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov7"]
+kamov7 doMove getpos airportBase
+
+_cas = 0
+#loop
+_cas = _cas + 10
+~10
+? !alive abrams1 and !alive abrams2 and !alive abrams3 and !alive vulcan1 and !alive vulcan2 : kamov1 doMove [12450.9,14759.5];kamov4 doMove [12450.9,14759.5];kamov2 doMove [12450.9,14759.5];kamov3 doMove [12450.9,14759.5];kamov5 doMove [12450.9,14759.5]; status5 = "FAILED"; publicvariable "status5" ;goto "skok"
+
+? !canMove kamov1 and !canMove kamov2 and !canMove kamov3 and !canMove kamov4 and !canMove kamov5 and !canMove kamov6 and !canMove kamov7: status5 = "DONE" ;publicvariable "status5" ;goto "skok"
+
+? _cas > 320 : status5 = "DONE" ; publicvariable "status5" ;kamov1 doMove [12450.9,14759.5];kamov4 doMove [12450.9,14759.5];kamov2 doMove [12450.9,14759.5];kamov3 doMove [12450.9,14759.5];kamov5 doMove [12450.9,14759.5]; goto "skok"
+
+goto "loop"
+
+;---------------- GLOBAL ------------------------------------------------
+#skok
+@status5 == "DONE" or status5 == "FAILED"
+~2
+? status5 == "FAILED" : [west,"HQ"] sideChat "***** All USA armored vehicles are destroyed *****";[resistance,"HQ"] sideChat "***** All USA armored vehicles are destroyed *****";titleText ["M I S S I O N   F A I L E D ","PLAIN",2]
+
+? status5 == "DONE" : [west,"HQ"] sideChat "***** We have defended airport *****";[resistance,"HQ"] sideChat "***** We have defended airport *****";titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2];playsound "fanfare"
+"5"objStatus "HIDDEN" 
+"kamovAttack" setMarkerpos [0,0]
+~30
+{_x setdammage 1}foreach units grpkamov 
+~2
+deletegroup grpkamov
+exit 

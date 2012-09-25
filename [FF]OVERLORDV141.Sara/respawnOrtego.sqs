@@ -1,0 +1,20 @@
+#loop
+
+? resp == "north" : goto "skok"
+
+@ count list ortego > 19 
+hint "Respawn position was changed (Ortego - North)"
+[resistance,"HQ"] sideChat "***** 20 enemies in Ortego! Fall back! *****"
+"Respawn_guerrila" setMarkerPos [12439.4,7398.45,0.07]
+
+? local server : resp = "north"; publicvariable "resp"
+#skok
+
+@ count list ortego < 3 
+hint "Respawn position was changed (Ortego - South)"
+[resistance,"HQ"] sideChat "***** OK, Ortego is almost clear! Advance! *****"
+"Respawn_guerrila" setMarkerPos [12346.9,6972.93]
+
+? local server : resp = "south"; publicvariable "resp"
+
+goto "loop"

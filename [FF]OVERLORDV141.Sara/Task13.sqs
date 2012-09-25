@@ -1,0 +1,209 @@
+;-------- TASK 13 (CHEMICAL WEAPON,secondary) ------------------
+
+;-----------SERVER--------------------
+? not local server :goto "random"
+~random (30) + 20
+Task13Wait = true
+publicvariable "Task13Wait"
+
+farba = random 2
+farba = round farba
+? farba == 0 : cable = "red"
+? farba == 1 : cable = "green"
+? farba == 2 : cable = "blue"
+publicvariable "cable"
+
+;-----------GLOBAL--------------------
+#random
+@Task13Wait
+
+"arcadia" setMarkerColor "colorRed"
+player say "telegraph"
+"13"objStatus "ACTIVE" 
+~1
+hint "Deactivate chemical weapon in Arcadia. Weapon is in Ural."
+[resistance,"HQ"] sideChat "***** New secondary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Deactivate chemical weapon in Arcadia. Weapon is in Ural. *****"
+~3
+[resistance,"HQ"] sidechat "***** 15 minutes left to chemical attack! *****"
+[] exec "checkCHEMtime.sqs"
+
+"chemUralMarker" setmarkerpos  [7444.24,6499.18]
+"PCplan" setmarkerpos [7606.17,6371.43]
+
+? !plans : chemplany = pc addaction ["Find chem.weapon manual","manual.sqs"]
+? !plans : []exec "manualcheck.sqs"
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+[] exec "serverCHEMtime.sqs"
+;------------------SOLDIERS-----------------------------------
+~5
+grpA1 = createGroup east
+grpA2 = createGroup east
+grpA3 = createGroup east
+grpA4 = createGroup east
+grpA5 = createGroup east
+grpA6 = createGroup east
+grpA7 = createGroup east
+grpA8 = createGroup east
+grpA9 = createGroup east
+grpA10 = createGroup east
+grpA11 = createGroup east
+grpA12 = createGroup east
+
+
+"soldierEB" createUnit [ [7653.46,6381.45,0.000579834], grpA1 , "ar1=this"]
+"soldierEAT" createUnit [ [7477.1,6517.19,0.00034523], grpA2, "ar2=this"]
+"soldierEB" createUnit [ [7474.85,6520.36,0.000331879], grpA3, "ar3=this"]
+"soldierEB" createUnit [ [7563.7,6481.55,0.000728607], grpA4, "ar4=this"]
+"soldierEAT" createUnit[ [7555.19,6515.91,0.000675201], grpA5, "ar5=this"]
+"soldierEB" createUnit [ [7578.63,6563,0.000774384], grpA6, "ar6=this"]
+"soldierEB" createUnit [ [7513.55,6521.3,0.000579834], grpA7, "ar7=this"]
+"soldierEB" createUnit [ [7605.92,6474.87,0.000505447], grpA8, "ar8=this"]
+"soldierEB" createUnit [ [7522.96,6451.03,0.000658989], grpA9, "ar9=this"]
+"soldierEB" createUnit [ [7529.86,6563.16,0.000576019], grpA10, "ar10=this"]
+"soldierEB" createUnit [ [7598.37,6368.46,0.00143242], grpA12, "ar12=this;this setpos [7598.37,6368.46,0.00143242]"]
+~1
+{_x execVM "soldierwalkguard.sqf"} forEach [ar1,ar3,ar4,ar5,ar6,ar9,ar10]
+~10
+"soldierEB" createUnit [ getpos ar1, grpA1]
+"soldierEAT" createUnit [ getpos ar1, grpA1]
+"soldierEAA" createUnit [ getpos ar1, grpA1]
+~1
+"soldierEB" createUnit [ getpos ar2, grpA2]
+"soldierEAT" createUnit [ getpos ar2, grpA2]
+"soldierEAT" createUnit [ getpos ar2, grpA2]
+~1
+"soldierEB" createUnit [ getpos ar3, grpA3]
+"soldierEMG" createUnit [ getpos ar3, grpA3]
+"soldierEB" createUnit [ getpos ar3, grpA3]
+~1
+"soldierE" createUnit [ getpos ar4, grpA4]
+"soldierEB" createUnit [ getpos ar4, grpA4]
+"soldierEB" createUnit [ getpos ar4, grpA4]
+~1
+"soldierE" createUnit [ getpos ar5, grpA5]
+"soldierEMG" createUnit [ getpos ar5, grpA5]
+"soldierEMG" createUnit [ getpos ar5, grpA5]
+~1
+"soldierEAT" createUnit [ getpos ar6, grpA6]
+"soldierE" createUnit [ getpos ar6, grpA6]
+"soldierEB" createUnit [ getpos ar6, grpA6]
+~1
+"soldierEAT" createUnit [ getpos ar7, grpA7]
+"soldierE" createUnit [ getpos ar7, grpA7]
+"soldierEB" createUnit [ getpos ar7, grpA7]
+~1
+"soldierEB" createUnit [ getpos ar8, grpA8]
+"soldierEAT" createUnit [ getpos ar8, grpA8]
+"soldierEMG" createUnit [ getpos ar8, grpA8]
+~1
+"soldierE" createUnit [ getpos ar9, grpA9]
+"soldierEAA" createUnit [ getpos ar9, grpA9]
+"soldierEAT" createUnit [ getpos ar9, grpA9]
+~1
+"soldierEB" createUnit [ getpos ar10, grpA10]
+"soldierEAT" createUnit [ getpos ar10, grpA10]
+"soldierEAT" createUnit [ getpos ar10, grpA10]
+
+~1
+"soldierEB" createUnit [ getpos ar12, grpA12, "this setpos [7599.37,6368.46,0.00143242]"]
+"soldierEAT" createUnit [ getpos ar12, grpA12, "this setpos [7597.37,6368.46,0.00143242]"]
+"soldierEAT" createUnit [ getpos ar12, grpA12, "this setpos [7595.37,6368.46,0.00143242]"]
+
+;--------------BVP1------------------------------------------------------
+~0.5
+bvp1Arcadia  = "bmp2" createVehicle [7581.28,6452.19,0.00110245]
+"soldierECrew" createUnit [[7585.28,6452.19,0.00110245],grpA11,"this moveindriver bvp1Arcadia "]
+"soldierECrew" createUnit [[7585.28,6452.19,0.00110245],grpA11,"this moveingunner bvp1Arcadia "]
+"soldierECrew" createUnit [[7585.28,6452.19,0.00110245],grpA11,"this moveincommander bvp1Arcadia "]
+
+driver bvp1Arcadia execVM "ArmourGuard.sqf"
+
+chemUral setPos [7444.24,6499.18,0.000205994]
+chemUral setDir 90
+
+;---------------- GLOBAL ------------------------------------------------
+#skok
+@ deacWeapon or !(alive chemUral) or chemTime
+
+chemural removeaction deaktivaciaR
+chemural removeaction deaktivaciaG
+chemural removeaction deaktivaciaB
+
+"chemUralMarker" setmarkerpos  [0,0]
+
+? chemTime  : chemPlace = getpos airportbase; []exec "cough.sqs"; []exec "boom.sqs"; status13 = "FAILED"; goto "failed1"
+
+? !(alive chemUral) : chemPlace = getpos chemUral ;[]exec "cough.sqs"; []exec "boom2.sqs"; status13 = "FAILED"; goto "failed2"
+
+[resistance,"HQ"] sideChat format ["***** Good job, %1 has succesfully deactivated chemical weapon *****",meno]
+chemUral lock false
+
+~3
+[resistance,"HQ"] sideChat "***** Bring truck with chemical weapon to Somato  *****"
+
+;-----------SERVER--------------------
+? not local server :goto "skok2"
+
+@ chemUral distance Somato < 120 or !alive chemUral
+? !alive chemUral : []exec "boom2.sqs";status13 = "FAILED"; goto "failed2"
+meno3 = name driver chemural
+status13 = "DONE"
+publicVariable "status13"
+publicVariable "meno3"
+
+;---------------- GLOBAL ------------------------------------------------
+#skok2
+@status13 == "DONE" or status13 == "FAILED" 
+
+
+? status13 == "DONE" : [resistance,"HQ"] sideChat format["***** Chemical weapon is in our hands. Good work %1 *****",meno3];titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2];playsound "fanfare"
+
+#failed1
+? status13 == "FAILED" : titleText ["M I S S I O N   F A I L E D ","PLAIN",2];[resistance,"HQ"] sideChat "***** Shit,times out. Russians have fired chemical weapon on our base *****"
+goto "konec1"
+
+#failed2
+? status13 == "FAILED" and wrong : titleText ["M I S S I O N   F A I L E D ","PLAIN",2];[resistance,"HQ"] sideChat format["***** Shit, %1 has cut wrong cable *****",meno]
+
+? status13 == "FAILED" and !wrong : titleText ["M I S S I O N   F A I L E D ","PLAIN",2];[resistance,"HQ"] sideChat "***** Shit,ural with chemical weapon was destroyed *****"
+
+#konec1
+"13"objStatus "HIDDEN" 
+"Arcadia" setMarkerColor "colorBlack"
+"chemUralMarker" setmarkerpos  [0,0]
+"PCplan" setmarkerpos [0,0]
+
+;-----------SERVER--------------------
+~60
+? not local server : "Arcadia" setMarkerColor "colorGreen"; exit
+{_x setdammage 1}forEach units grpA1
+{_x setdammage 1}forEach units grpA2
+{_x setdammage 1}forEach units grpA3
+{_x setdammage 1}forEach units grpA4
+{_x setdammage 1}forEach units grpA5
+{_x setdammage 1}forEach units grpA6
+{_x setdammage 1}forEach units grpA7
+{_x setdammage 1}forEach units grpA8
+{_x setdammage 1}forEach units grpA9
+{_x setdammage 1}forEach units grpA10
+{_x setdammage 1}forEach units grpA11
+{_x setdammage 1}forEach units grpA12
+~2
+deleteGroup grpA1
+deleteGroup grpA2
+deleteGroup grpA3
+deleteGroup grpA4
+deleteGroup grpA5
+deleteGroup grpA6
+deleteGroup grpA7
+deleteGroup grpA8
+deleteGroup grpA9
+deleteGroup grpA10
+deleteGroup grpA11
+deleteGroup grpA12
+
+exit 

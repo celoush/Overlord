@@ -1,0 +1,62 @@
+respawn="base";
+respawndelay=20;
+disableAI = true
+
+titleParam1 = "Time of Defending Ortego:";
+valuesParam1[] = {0,300,600,1200,1800,2700,3600};
+defValueParam1 = 0;
+textsParam1[] = {"FAILED MISSIONS","5min","10min","20min","30min","45min","60min"};
+
+
+titleParam2 = "TIME";
+valuesParam2[] = {14,0,4,5,10};
+defValueParam2 = 0;
+textsParam2[] = {"Sunrise","Day","Evening","Sunset","Night"};
+
+onLoadMission="[FF] Overlord";
+
+class Header
+{
+  gameType = Coop;
+  minPlayers = 1;
+  maxPlayers = 30;
+};
+
+class CfgSounds
+{
+	sounds[] = 
+  {
+    telegraph, win,cough1, cough2
+  };
+
+      class telegraph
+	{
+		name = "telegraph";
+		sound[] = {"telegraph.ogg", 1, 0.8};
+		titles[] = {	};
+	};
+
+      class win
+	{
+		name = "win";
+		sound[] = {"win.ogg", 1.3, 1.0};
+		titles[] = {	};
+	};
+
+	class cough1
+	{
+		name = "cough1";
+		sound[] = {"cough1.ogg", 2, 1.0};
+		titles[] = {	};
+	};
+
+	class cough2
+	{
+		name = "cough2";
+		sound[] = {"cough2.ogg", 2, 1.0};
+		titles[] = {	};
+	};
+
+
+
+};

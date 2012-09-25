@@ -1,0 +1,228 @@
+
+;-------- TASK 8 (Capture Ortego,primary) ------------------
+
+
+;---------16 groups--------------------
+;-------------------------------------
+
+~ 15
+player say "telegraph"
+"8"objStatus "ACTIVE" 
+~1
+hint "Capture Ortego"
+[resistance,"HQ"] sideChat "***** New primary mission: *****"
+[west,"HQ"] sideChat "***** New primary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Capture Ortego *****"
+[west,"HQ"] sideChat "***** Capture Ortego *****"
+
+"Ortego" setMarkerColor "colorRed"
+
+;-----------SERVER--------------------
+? not local server :goto "konec"
+
+grpR1 = createGroup east
+grpR2 = createGroup east
+grpR3 = createGroup east
+grpR4 = createGroup east
+grpR5 = createGroup east
+grpR6 = createGroup east
+grpR7 = createGroup east
+grpR8 = createGroup east
+grpR9 = createGroup east
+grpR10 = createGroup east
+grpR11 = createGroup east
+grpR12 = createGroup east
+grpR13 = createGroup east
+grpR14 = createGroup east
+grpR15 = createGroup east
+grpR16 = createGroup east
+
+
+abrams1 doMove [12075.8,7307.49,0.00105095]
+abrams2 doMove [12377.1,7458.57,0.000907898]
+abrams3 doMove [12477.1,7458.57,0.000907898]
+
+tank1 doMove [12075,7307.49,0.00105095]
+tank2 doMove [12100,7307.49,0.00105095]
+tank3 doMove [120350,7307.49,0.00105095]
+
+kulak1 = "dshkm" createVehicle [12411.7,7416.82,0.0220776]
+"soldierE" createUnit [getpos rus,rus,"this moveingunner kulak1"]
+
+kulak2 = "dshkm" createVehicle [12123.6,7266.45,0.000795364]
+"soldierE" createUnit [getpos rus,rus,"this moveingunner kulak2"]
+
+~0.5
+"soldierE" createUnit [ [12643,7495,0.01], group rus]
+"soldierE" createUnit [ [12637,7495,0.01], group rus]
+;-----------------SOLDIERS-------------------------------------------
+~1
+"soldierEB" createUnit [ [12428.3,7401.21,0.00120163], grpR1 ,"o1 = this"]
+"soldierEAT" createUnit [ [12402.2,7338.64,0.00139618], grpR2 ,"o2 = this"]
+"soldierEB" createUnit [ [12470.3,7330.03,0.00157738], grpR3 ,"o3 = this"]
+"soldierEMG" createUnit [ [12477,7217.14,0.00141716], grpR4 ,"o4 = this"]
+"soldierEB" createUnit [ [12322.8,7248.05,0.00139618], grpR5 ,"o5 = this"]
+"soldierEB" createUnit [ [12410.1,7287.82,0.00133705], grpR6 ,"o6 = this"]
+"soldierEAT" createUnit [ [12350.6,7368.86,0.0013], grpR7 ,"o7 = this"]
+~2
+"soldierEB" createUnit [ [12262.9,7090.23,0.00146675], grpR8 ,"o8 = this"]
+"soldierEB" createUnit [ [12207.3,7102.81,0.001], grpR9 ,"o9 = this"]
+"soldierE" createUnit [ [12446.6,7097.93,0.00136375], grpR10 ,"o10 = this"]
+"soldierEB" createUnit [ [12572,7094.51,0.00134468], grpR11 ,"o11 = this"]
+"soldierEMG" createUnit [ [12456.6,7124.07,0.0014534], grpR12 ,"o12 = this"]
+"soldierEB" createUnit [ [12396.1,7218.49,0.0012455], grpR13 ,"o13 = this"]
+"soldierE" createUnit [ [12331.3,7192.26,0.0011673], grpR14 ,"o14 = this"]
+"soldierEB" createUnit [ [12125.9,7245.85,0.000951767], grpR15 ,"o15 = this"]
+"soldierEMG" createUnit [ [12562,7158.41,0.000804901], grpR16 ,"o16 = this"]
+
+{[_x] join grpNull; _x execVM "soldierwalkguard.sqf"} forEach [o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16]
+~15
+"soldierEB" createUnit [ [12123.6,7262.45,0.000795364], group o1]
+"soldierEB" createUnit [ [12384.9,7347.74,0.00145721], group o1]
+"soldierEB" createUnit [ [12384.9,7347.74,0.00145721], group o1]
+~0.5
+"soldierEB" createUnit [ [12402.5,7360.96,0.00139618], group o2]
+"soldierEMG" createUnit [ [12383.8,7330.32,0.00140762], group o2]
+"soldierEMG" createUnit [ [12383.8,7330.32,0.00140762], group o2]
+~0.5
+"soldierE" createUnit [ [12476.9,7325.78,0.00151634], group o3]
+"soldierEB" createUnit [ [12472.7,7227.45,0.00144577], group o3]
+"soldierEB" createUnit [ [12472.7,7227.45,0.00144577], group o3]
+~1
+"soldierEB" createUnit [ [12356.4,7262.54,0.00140762], group o4]
+"soldierEAT" createUnit [ [12350.4,7268.04,0.00138283], group o4]
+"soldierEAT" createUnit [ [12350.4,7268.04,0.00138283], group o4]
+~0.5
+"soldierEB" createUnit [ [12324.8,7248.05,0.00139618], group o5]
+"soldierEAA" createUnit [ [12325.8,7249.05,0.00139618], group o5]
+~1
+"soldierEB" createUnit [ [12412.1,7287.82,0.00133705], group o6]
+"soldierEB" createUnit [ [12349,7368.86,0.0013], group o6]
+~1
+"soldierEB" createUnit [ [12269,7188.82,0.00146675], group o7]
+"soldierEMG" createUnit [ [12270.6,7188.82,0.00146675], group o7]
+~0.5
+"soldierE" createUnit [ [12264.9,7090.23,0.00146675], group o8]
+"soldierEB" createUnit [ [12205.3,7102.81,0.001], group o8]
+~1
+"soldierEMG" createUnit [ [12209.3,7102.81,0.001], group o9]
+"soldierEB" createUnit [ [12446.6,7095.93,0.00136375], group o9]
+~1
+"soldierEB" createUnit [ [12506.1,7101.85,0.00136185], group o10]
+"soldierEAA" createUnit [ [12508.1,7101.85,0.00136185], group o10]
+~1
+"soldierEMG" createUnit [ [12574,7094.51,0.00134468], group o11]
+"soldierEB" createUnit [ [12532.9,7091.11,0.00177765], group o11]
+~0.5
+"soldierEB" createUnit [ [12362.4,7106.4,0.00136375],group o12]
+"soldierE" createUnit [ [12360.4,7106.4,0.00136375],group o12]
+~0.5
+"soldierEAT" createUnit [ [12420.8,7245.04,0.00133514], group o13]
+"soldierEB" createUnit [ [12337.3,7192.26,0.0011673], group o13]
+~0.5
+"soldierEB" createUnit [ [12172.1,7088.78,0.000896454], group o14]
+"soldierEAT" createUnit [ [12174.1,7088.78,0.000896454], group o14]
+~1
+"soldierEMG" createUnit [ [12127.9,7245.85,0.000951767], group o15]
+"soldierEB" createUnit [ [12562,7160.41,0.000804901], group o15]
+~0.5
+"soldierEB" createUnit [ [12332,7069.62,0.000771523], group o16]
+"soldierEMG" createUnit [ [12335,7069.62,0.000771523], group o16]
+
+;---------------*** ARMOUR ***------------------------------------------------------
+
+;--------------BVP1------------------------------------------------------
+~0.5
+bvp1Ortego  = "bmp2" createVehicle [12075.8,7307.49,0.00105095]
+"soldierECrew" createUnit [getpos rus,grpRo1,"this moveindriver bvp1Ortego,d1 = this"]
+"soldierECrew" createUnit [getpos rus,grpRo1,"this moveingunner bvp1Ortego"]
+"soldierECrew" createUnit [getpos rus,grpRo1,"this moveincommander bvp1Ortego"]
+
+;--------------BVP2------------------------------------------------------
+~0.5
+bvp2Ortego  = "bmp2" createVehicle [12477.1,7458.57,0.000907898]
+"soldierECrew" createUnit [getpos rus,grpRo2,"this moveindriver bvp2Ortego,d2 = this"]
+"soldierECrew" createUnit [getpos rus,grpRo2,"this moveingunner bvp2Ortego"]
+"soldierECrew" createUnit [getpos rus,grpRo2,"this moveincommander bvp2Ortego"]
+
+;--------------tank1------------------------------------------------------
+~0.5
+tank1Ortego  = "t72" createVehicle [12457.1,7458.57,0.000907898]
+"soldierECrew" createUnit [getpos rus,grpRo1,"this moveindriver tank1Ortego,dt1 = this"]
+"soldierECrew" createUnit [getpos rus,grpRo1,"this moveingunner tank1Ortego"]
+"soldierECrew" createUnit [getpos rus,grpRo1,"this moveincommander tank1Ortego"]
+
+;--------------tank1------------------------------------------------------
+~0.5
+tank2Ortego  = "t72" createVehicle [12457.1,7458.57,0.000907898]
+"soldierECrew" createUnit [getpos rus,grpRo2,"this moveindriver tank2Ortego,dt2 = this"]
+"soldierECrew" createUnit [getpos rus,grpRo2,"this moveingunner tank2Ortego"]
+"soldierECrew" createUnit [getpos rus,grpRo2,"this moveincommander tank2Ortego"]
+
+d1 execVM "ArmourGuard.sqf"
+d2 execVM "ArmourGuard.sqf"
+
+;--------------SHILKA1------------------------------------------------------
+shilka1  = "ZSU" createVehicle [12028,7186,0.01]
+"soldierECrew" createUnit [getpos rus,grpShilka,"this moveingunner shilka1"]
+
+~0.5
+"soldierEB" createUnit [ [12031,7187,0.01], grpShilka]
+"soldierEB" createUnit [ [12026,7189,0.01], grpShilka]
+
+;--------------SHILKA2------------------------------------------------------
+~0.5
+shilka2  = "ZSU" createVehicle [12640,7497,0.01]
+"soldierECrew" createUnit [getpos rus,grpShilka,"this moveingunner shilka2"]
+{_x disableAI "move"} forEach units grpShilka
+
+~0.5
+ortegoguard = +(list ortego)
+
+
+;----------------------DONE?------------------------------------------------------------------------
+@count list ortego < 7
+
+status8 = "DONE"
+publicVariable "status8"
+{_x switchmove "testsurrender"}foreach list ortego
+{removeallweapons _x}foreach list ortego
+
+;---------------- GLOBAL ------------------------------------------------
+#konec
+@status8 == "DONE"
+"Ortego" setmarkerColor "colorGreen"
+[resistance,"HQ"] sideChat "***** Russians in Ortego have surrended *****"
+[west,"HQ"] sideChat "***** Russians in Ortego surrended *****"
+"8"objStatus "HIDDEN"
+~1
+titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]
+playsound "fanfare"
+
+;-----------SERVER--------------------
+? not local server : exit
+~120
+{_x switchMove "AmovPercMstpSsurWnonDnon"} foreach ortegoguard 
+~4
+{_x setdammage 1}forEach list ortego
+~10
+{hidebody _x} foreach ortegoguard 
+deleteGroup grpR1
+deleteGroup grpR2
+deleteGroup grpR3
+deleteGroup grpR4
+deleteGroup grpR5
+deleteGroup grpR6
+deleteGroup grpR7
+deleteGroup grpR8
+deleteGroup grpR9
+deleteGroup grpR10
+deleteGroup grpR11
+deleteGroup grpR12
+deleteGroup grpR13
+deleteGroup grpR14
+deleteGroup grpR15
+deleteGroup grpR16
+deleteGroup grpShilka
+exit 

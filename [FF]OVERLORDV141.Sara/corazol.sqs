@@ -1,0 +1,34 @@
+;-------- TASK 3 (Corazol,primary) ------------------
+
+~20
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+_corazolguard = +(list corazol)
+@count list corazol < 5
+corazolClear = true
+publicVariable "corazolClear"
+~15
+{_x switchmove "testsurrender"}foreach list corazol
+{removeallweapons _x}foreach list corazol
+
+;---------------- GLOBAL ------------------------------------------------
+#skok
+@corazolClear
+
+~5
+? status3 == "none" : [resistance,"HQ"] sideChat "***** Good job, Corazol is clear *****"
+
+"corazol" setMarkerColor "colorGreen"
+
+;-----------SERVER--------------------
+? not local server : exit
+
+~6
+{_x switchMove "AmovPercMstpSsurWnonDnon"} foreach _corazolguard
+~1
+{_x setdammage 1}forEach list corazol
+~10
+{hidebody _x} foreach _corazolguard
+
+exit 

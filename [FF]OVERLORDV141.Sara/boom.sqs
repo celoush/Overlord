@@ -1,0 +1,56 @@
+;-----------SERVER--------------------
+? not local server : exit
+
+~10
+
+_dis=20
+_i= 0
+_typ  = "smokeShellGreen" 
+_kde = airportbase
+chemPlace = getpos airportbase
+publicvariable "chemPlace"
+
+"Bo_GBU12_LGB" createvehicle  getpos chemural
+~0.2
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) -_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) -_dis]
+~0.3
+"Bo_GBU12_LGB" createvehicle  getpos chemural
+_dis = _dis*2
+~0.2
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) -_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) -_dis]
+_dis = _dis*1.2
+~0.2
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) -_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) +_dis]
+"Bo_GBU12_LGB" createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) -_dis]
+~0.1
+"Bo_GBU12_LGB" createvehicle [9596.39,9883.2,0.00140381]
+"Bo_GBU12_LGB" createvehicle [9552.49,9920.13,0.00140381]
+"Bo_GBU12_LGB" createvehicle [9601.38,9834.06,0.00140381]
+"Bo_GBU12_LGB" createvehicle [9517.56,9923.51,0.00140381]
+"Bo_GBU12_LGB" createvehicle [9497.37,9820.71,0.00140381]
+
+_dis = 30
+#smoke
+_dis = _dis / 2
+_typ createvehicle  getpos chemural
+_typ createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) +_dis]
+_typ createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) -_dis]
+_typ createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) +_dis]
+_typ createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) -_dis]
+_dis = _dis*2
+_typ createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) +_dis]
+_typ createvehicle  [(getpos _kde select 0) +_dis,(getpos _kde select 1) -_dis]
+_typ createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) +_dis]
+_typ createvehicle  [(getpos _kde select 0) -_dis,(getpos _kde select 1) -_dis]
+_i = _i + 1
+? _i == 20 : chemend = true; publicvariable "chemend"; exit
+~53
+goto "smoke"

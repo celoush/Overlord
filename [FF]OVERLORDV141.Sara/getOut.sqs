@@ -1,0 +1,17 @@
+;***************** by FriZY & Faust *****************************************************************************************
+
+;---------------- ONLY (Guer) PILOTS CAN FLY ------------------------------------------------
+@alive player
+? typeOf player == "soldierGPilot" : exit
+
+#loop
+@ vehicle player iskindof "helicopter" or vehicle player isKindOf "Plane"
+? driver vehicle player == player and typeof vehicle player != "ParachuteG" : player action ["getout", vehicle player]; [resistance,"HQ"] sidechat "You cant pilot helicopters or planes"
+~2
+goto "loop"
+
+
+;******************** getOut.sqs copyright (c) 2007 All right resrved LOL ***************************************************
+
+
+

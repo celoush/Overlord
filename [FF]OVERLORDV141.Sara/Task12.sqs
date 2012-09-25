@@ -1,0 +1,181 @@
+;-------- TASK 12 (CAPTURE CAYO,primary) ------------------
+~10
+"cayo" setMarkerColor "colorRed"
+player say "telegraph"
+"12"objStatus "ACTIVE" 
+~1
+hint "Capture Cayo"
+[resistance,"HQ"] sideChat "***** New primary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Capture Cayo *****"
+
+[] exec "usasupport.sqs"
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+abrams1 doMove [9469,6035]
+
+abrams2 doMove [9469,6035]
+
+abrams3 doMove [9469,6035]
+
+;------------------CAYO SOLDIERS-----------------------------------
+~5
+grpR1 = createGroup east
+grpR2 = createGroup east
+grpR3 = createGroup east
+grpR4 = createGroup east
+grpR5 = createGroup east
+grpR6 = createGroup east
+grpR7 = createGroup east
+grpR8 = createGroup east
+grpR9 = createGroup east
+grpR10 = createGroup east
+
+"soldierEB" createUnit [ [9426.09,6109.72,0.00160599], grpR1 , "c1=this"]
+"soldierEAT" createUnit [ [9327.7,5951.54,0.00143814], grpR2, "c2=this"]
+"soldierEB" createUnit [ [9442.75,5966.76,0.00148773], grpR3, "c3=this"]
+"soldierEB" createUnit [ [9417.18,5831.27,0.00143814], grpR4, "c4=this"]
+"soldierEAT" createUnit[ [9339.42,5874.24,0.00143814], grpR5, "c5=this"]
+"soldierEB" createUnit [ [9237.55,5870.94,0.00143814], grpR6, "c6=this"]
+"soldierEB" createUnit [ [9257.08,5803.27,0.00143814], grpR7, "c7=this"]
+"soldierEB" createUnit [ [9373.91,6119.88,0.00154495], grpR8, "c8=this"]
+"soldierEB" createUnit [ [9315.1,6060.65,0.00126266], grpR9, "c9=this"]
+"soldierEB" createUnit [ [9239.76,5841.19,0.00127792], grpR10, "c10=this"]
+
+grpR1 selectLeader c1
+grpR2 selectLeader c2
+grpR3 selectLeader c3
+grpR4 selectLeader c4
+grpR5 selectLeader c5
+grpR6 selectLeader c6
+grpR7 selectLeader c7
+grpR8 selectLeader c8
+grpR9 selectLeader c9
+grpR10 selectLeader c10
+
+~1
+
+{_x execVM "soldierwalkguard.sqf"} forEach [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10]
+~10
+"soldierEB" createUnit [ [9426.09,6109.72,0.00160599], grpR1]
+"soldierEAT" createUnit [ [9426.09,6109.72,0.00160599], grpR1]
+"soldierEAA" createUnit [ [9426.09,6109.72,0.00160599], grpR1]
+~1
+"soldierEB" createUnit [ [9327.7,5951.54,0.00143814], grpR2]
+"soldierEAT" createUnit [ [9327.7,5951.54,0.00143814], grpR2]
+"soldierEAT" createUnit [ [9327.7,5951.54,0.00143814], grpR2]
+~1
+"soldierEB" createUnit [ [9442.75,5966.76,0.00148773], grpR3]
+"soldierEMG" createUnit [ [9442.75,5966.76,0.00148773], grpR3]
+"soldierEB" createUnit [ [9442.75,5966.76,0.00148773], grpR3]
+~1
+"soldierE" createUnit [ [9417.18,5831.27,0.00143814], grpR4]
+"soldierEB" createUnit [ [9417.18,5831.27,0.00143814], grpR4]
+"soldierEB" createUnit [ [9417.18,5831.27,0.00143814], grpR4]
+~1
+"soldierE" createUnit [ [9339.42,5874.24,0.00143814], grpR5]
+"soldierEMG" createUnit [ [9339.42,5874.24,0.00143814], grpR5]
+"soldierEMG" createUnit [ [9339.42,5874.24,0.00143814], grpR5]
+~1
+"soldierEAT" createUnit [ [9237.55,5870.94,0.00143814], grpR6]
+"soldierE" createUnit [ [9237.55,5870.94,0.00143814], grpR6]
+"soldierEB" createUnit [ [9237.55,5870.94,0.00143814], grpR6]
+~1
+"soldierEAT" createUnit [ [9257.08,5803.27,0.00143814], grpR7]
+"soldierE" createUnit [ [9257.08,5803.27,0.00143814], grpR7]
+"soldierEB" createUnit [ [9257.08,5803.27,0.00143814], grpR7]
+~1
+"soldierEB" createUnit [ [9373.91,6119.88,0.00154495], grpR8]
+"soldierEAT" createUnit [ [9373.91,6119.88,0.00154495], grpR8]
+"soldierEMG" createUnit [ [9373.91,6119.88,0.00154495], grpR8]
+~1
+"soldierE" createUnit [ [9315.1,6060.65,0.00126266], grpR9]
+"soldierEAA" createUnit [ [9315.1,6060.65,0.00126266], grpR9]
+"soldierEAT" createUnit [ [9315.1,6060.65,0.00126266], grpR9]
+~1
+"soldierEB" createUnit [ [9239.76,5841.19,0.00127792], grpR10]
+"soldierEAT" createUnit [ [9239.76,5841.19,0.00127792], grpR10]
+"soldierEAT" createUnit [ [9239.76,5841.19,0.00127792], grpR10]
+
+;--------------BVP1------------------------------------------------------
+~0.5
+bvp1Cayo  = "bmp2" createVehicle [9469.13,6035.18,0.001194]
+"soldierECrew" createUnit [[9357.51,6141.98,0.00181198],grpRc1,"this moveindriver bvp1Cayo"]
+"soldierECrew" createUnit [[9357.51,6141.98,0.00181198],grpRc1,"this moveingunner bvp1Cayo"]
+"soldierECrew" createUnit [[9357.51,6141.98,0.00181198],grpRc1,"this moveincommander bvp1Cayo"]
+
+driver bvp1Cayo execVM "ArmourGuard.sqf"
+
+;--------------Tank2------------------------------------------------------
+~0.5
+T72Cayo2  = "T72" createVehicle [9479.13,6035.18,0.001194]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc1,"this moveindriver T72Cayo2"]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc1,"this moveingunner T72Cayo2"]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc1,"this moveincommander T72Cayo2"]
+
+;--------------Tank1------------------------------------------------------
+~0.5
+T72Cayo  = "T72" createVehicle [9268.04,6037.53,0.000652313]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc2,"this moveindriver T72Cayo"]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc2,"this moveingunner T72Cayo"]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc2,"this moveincommander T72Cayo"]
+
+driver T72Cayo execVM "ArmourGuard.sqf"
+
+;--------------Shilka1------------------------------------------------------
+~0.5
+ShilkaCayo  = "ZSU" createVehicle [9492.56,5819.36,0.00056076]
+"soldierECrew" createUnit [[9492.56,5819.36,0.00056076],grpShilka,"this moveindriver ShilkaCayo"]
+"soldierECrew" createUnit [[9492.56,5819.36,0.00056076],grpShilka,"this moveingunner ShilkaCayo"]
+"soldierECrew" createUnit [[9492.56,5819.36,0.00056076],grpShilka,"this moveincommander ShilkaCayo"]
+
+"soldierEB" createUnit [ [9495,5819.36,0.00056076], grpShilka]
+"soldierEAT" createUnit [ [9489,5819.36,0.00056076], grpShilka]
+
+{_x disableAI "move"} forEach units grpShilka
+
+_cayoguard = +(list cayo)
+
+@count list cayo < 5 
+status12 = "DONE"
+publicVariable "status12"
+{_x switchmove "testsurrender"}foreach list cayo
+{removeallweapons _x}foreach list cayo
+
+
+;---------------- GLOBAL ------------------------------------------------
+#skok
+@status12 == "DONE"
+
+~3
+[resistance,"HQ"] sideChat "***** Russians in Cayo have surrended *****"
+
+"12"objStatus "HIDDEN" 
+"Cayo" setMarkerColor "colorGreen"
+"Arcadia" setMarkerColor "colorGreen"
+~5
+titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]
+playsound "fanfare"
+
+;-----------SERVER--------------------
+? not local server : exit
+
+~6
+{_x switchMove "AmovPercMstpSsurWnonDnon"} foreach _cayoguard 
+~1
+{_x setdammage 1}forEach list cayo
+~10
+{hidebody _x} foreach _cayoguard 
+deleteGroup grpR1
+deleteGroup grpR2
+deleteGroup grpR3
+deleteGroup grpR4
+deleteGroup grpR5
+deleteGroup grpR6
+deleteGroup grpR7
+deleteGroup grpR8
+deleteGroup grpR9
+deleteGroup grpR10
+exit 

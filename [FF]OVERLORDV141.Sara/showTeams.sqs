@@ -1,0 +1,76 @@
+
+_sol1 = name a1
+_sol2 = name a2
+_sol3 = name a3
+_sol4 = name a4
+_sol5 = name a5
+_sol6 = name a6
+_sol7 = name a7
+_pil1 = name p1
+
+_sol8 = name a8
+_sol9 = name a9
+_sol10 = name a10
+_sol11 = name a11
+_sol12 = name a12
+_sol13 = name a13
+_sol14 = name a14
+_pil2 = name p2
+
+_sol15 = name a15
+_sol16 = name a16
+_sol17 = name a17
+_sol18 = name a18
+_sol19 = name a19
+_sol20 = name a20
+_pil3 = name p3
+
+_sol21 = name a21
+_sol22 = name a22
+_sol23 = name a23
+_sol24 = name a24
+_sol25 = name a25
+_sol26 = name a26
+_pil4 = name p4
+
+
+
+? !isPlayer a1 : _sol1 = "---"
+? !isPlayer a2 : _sol2 = "---"
+? !isPlayer a3 : _sol3 = "---"
+? !isPlayer a4 : _sol4 = "---"
+? !isPlayer a5 : _sol5 = "---"
+? !isPlayer a6 : _sol6 = "---"
+? !isPlayer a7 : _sol7 = "---"
+? !isPlayer p1 : _pil1 = "---"
+
+? !isPlayer a8 : _sol8 = "---"
+? !isPlayer a9 : _sol9 = "---"
+? !isPlayer a10 : _sol10 = "---"
+? !isPlayer a11 : _sol11 = "---"
+? !isPlayer a12 : _sol12 = "---"
+? !isPlayer a13 : _sol13 = "---"
+? !isPlayer a14 : _sol14 = "---"
+? !isPlayer p2 : _pil2 = "---"
+
+? !isPlayer a15 : _sol15 = "---"
+? !isPlayer a16 : _sol16 = "---"
+? !isPlayer a17 : _sol17 = "---"
+? !isPlayer a18 : _sol18 = "---"
+? !isPlayer a19 : _sol19 = "---"
+? !isPlayer a20 : _sol20 = "---"
+? !isPlayer p3 : _pil3 = "---"
+
+? !isPlayer a21 : _sol21 = "---"
+? !isPlayer a22 : _sol22 = "---"
+? !isPlayer a23 : _sol23 = "---"
+? !isPlayer a24 : _sol24 = "---"
+? !isPlayer a25 : _sol25 = "---"
+? !isPlayer a26 : _sol26 = "---"
+? !isPlayer p4 : _pil4 = "---"
+
+
+hint  format ["***** ALFA TEAM *****\nLeader: %1 \nPilot: %27 \nMedic: %2 \nSoldier: %3 \nSoldier: %4 \nSoldier: %5 \nSoldier: %6 \nSoldier: %7\n***** BRAVO TEAM *****\nLeader: %21 \nPilot: %30 \nMedic: %22 \nSoldier: %23 \nSoldier: %24 \nSoldier: %25 \nSoldier: %26 \n***** CHARLIE TEAM *****\nLeader: %15 \nPilot: %29 \nMedic: %16 \nSoldier: %17 \nSoldier: %18 \nSoldier: %19 \nSoldier: %20 \n***** DELTA TEAM *****\nLeader: %8 \nPilot: %28 \nMedic: %9 \nSoldier:%10\nSoldier:%11\nSoldier:%12\nSoldier:%13\nSoldier:%14",_sol1,_sol2,_sol3,_sol4,_sol5,_sol6,_sol7,_sol8,_sol9,_sol10,_sol11,_sol12,_sol13,_sol14,_sol15,_sol16,_sol17,_sol18,_sol19,_sol20,_sol21,_sol22,_sol23,_sol24,_sol25,_sol26,_pil1,_pil2,_pil3,_pil4] 
+
+
+exit

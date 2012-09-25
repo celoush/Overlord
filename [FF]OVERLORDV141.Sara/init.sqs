@@ -1,0 +1,111 @@
+"1"objStatus "HIDDEN" 
+"2"objStatus "HIDDEN" 
+"3"objStatus "HIDDEN" 
+"4"objStatus "HIDDEN" 
+"5"objStatus "HIDDEN" 
+"6"objStatus "HIDDEN" 
+"7"objStatus "HIDDEN" 
+"8"objStatus "HIDDEN" 
+"9"objStatus "HIDDEN" 
+"10"objStatus "HIDDEN" 
+"11"objStatus "HIDDEN" 
+"12"objStatus "HIDDEN" 
+"13"objStatus "HIDDEN" 
+"14"objStatus "HIDDEN" 
+"19"objStatus "HIDDEN" 
+
+{_x disableAI "move"} forEach units group a1
+{_x disableAI "move"} forEach units group a8
+{_x disableAI "move"} forEach units group a15
+{_x disableAI "move"} forEach units group a21
+dostojnik disableAI "move"
+
+poplach setpos [0,0,0]
+
+civilian setFriend [resistance,1]
+resistance setFriend [civilian,1]
+
+PilotSafe = false
+deacWeapon = false
+chemtime=false
+Task4Wait = false
+Task6Wait = false
+Task9Wait = false
+Task11Wait = false
+Task13Wait = false
+corazolClear = false
+chemend = false
+plans = false
+wrong = false
+
+;---------------SERVER-----------------
+? not local server : skiptime param2; goto "konec"
+grpShilka = createGroup east
+grpR1 = createGroup east
+grpR2 = createGroup east
+grpR3 = createGroup east
+grpR4 = createGroup east
+grpR5 = createGroup east
+grpR6 = createGroup east
+grpR7 = createGroup east
+grpR8 = createGroup east
+grpR9 = createGroup east
+grpR10 = createGroup east
+grpR11 = createGroup east
+grpR12 = createGroup east
+grpR13 = createGroup east
+grpR14 = createGroup east
+grpR15 = createGroup east
+grpR16 = createGroup east
+grpRT72 = createGroup east
+;---ortego-------
+grpRo1 = createGroup east
+grpRo2 = createGroup east
+;-----cayo---------
+grpRc1 = createGroup east
+grpRc2 = createGroup east
+
+grpUsa1 = createGroup west
+grpUSAc1 = createGroup west
+
+;----------vozidla na letisku---------------
+BH3 setpos [2577,2726,0.1]
+mh4 setpos [2557,2726,0.1]
+mh5 setpos [2537,2726,0.1]
+mh6 setpos [2517,2726,0.1]
+stryker setpos [2577.27,2633.5,0.00143909]
+car1 setpos [2557.27,2633.5,0.00143909]
+car2 setpos [2537.27,2633.5,0.00143909]
+;--------------------------------
+
+tankCorazol setpos [2551.51,2969.81,0.00124264]
+tankCorazol2 setpos [2571.51,2969.81,0.00124264]
+
+
+[] exec "markers.sqs"
+Status1 = "None"
+Status2 = "None"
+Status3 = "None"
+Status4 = "None"
+Status5 = "None"
+Status6 = "None"
+Status7 = "None"
+Status8 = "None"
+Status9 = "None"
+Status10 = "None"
+Status11 = "None"
+Status12 = "None"
+Status13 = "None"
+Status14 = "None"
+
+resp = "south"
+landed = false
+
+;--------------On Player Connected---------------------------------------
+
+onPlayerConnected "publicvariable ""Status1""; publicvariable ""Status2""; publicvariable ""Status3""; publicvariable ""Status4""; publicvariable ""Status5""; publicvariable ""Status6""; publicvariable ""Status7"";publicvariable ""Status8"";publicvariable ""Status9"" ;publicvariable ""Task4Wait"";publicvariable ""Task9Wait"";publicvariable ""RescueWait"";publicvariable ""Status10"";publicvariable ""Task6Wait"";publicvariable ""Task11Wait"";publicvariable ""Status11"";publicvariable ""Status12"";publicvariable ""Status13"";publicvariable ""Task13Wait"";publicVariable ""chemCas0"";publicVariable ""chemtime"";publicvariable ""chemPlace""; publicvariable ""chemEnd"";publicvariable ""cable""; publicvariable ""plans"";publicvariable ""corazolClear""; publicvariable ""wrong"";publicvariable""resp"";publicvariable""landed"";publicvariable ""Status14"""
+
+#konec
+[] exec "onPlayerConnected.sqs"
+[] exec "settings.sqs"
+[] exec "getout.sqs"

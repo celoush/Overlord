@@ -1,0 +1,10 @@
+
+;--------  (chem. weapon,secondary) ------------------
+
+meno = name player 
+publicvariable "meno"
+
+? cable != "green" : chemUral setdammage 1; wrong = true; publicVariable "wrong"; exit
+deacWeapon = true
+publicvariable "deacWeapon"
+exit

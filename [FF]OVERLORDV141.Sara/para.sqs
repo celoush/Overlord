@@ -1,0 +1,80 @@
+para1 = createGroup west
+para2 = createGroup west
+para3 = createGroup west
+pilotBH1 = createGroup west
+pilotBH2 = createGroup west
+pilotBH3 = createGroup west
+
+;--------------------- BH --------------------------------
+posila1 = "uh60" createvehicle [11398,8542.97,0.00167847]
+posila1 setdir 180 
+
+posila2 = "uh60" createvehicle [12495,9163.2,0.0014267]
+posila2 setdir 180 
+
+posila3 = "uh60" createvehicle [13140.4,8416.26,0.0012722]
+posila3 setdir 180
+
+_vyska = 150
+;---------------------- CREW 1---------------------------
+_grp = para1
+~5
+"SoldierWPilot" createunit [[11398,8542.97,0.00167847],pilotBH1 ,"this moveindriver posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila1"]
+
+posila1 domove [12478.5,6120.42]
+posila1 flyinheight _vyska
+
+;---------------------- CREW 2---------------------------
+_grp = para2
+~5
+"SoldierWPilot" createunit [[12468,9183.2,0],pilotBH2 ,"this moveindriver posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila2"]
+
+posila2 domove [12200,6120.42]
+posila2 flyinheight _vyska
+
+;---------------------- CREW 3---------------------------
+_grp = para3
+~5
+"SoldierWPilot" createunit [[13140.4,8416.26,0.0012722],pilotBH3 ,"this moveindriver posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+"soldierW" createunit [[12468,9183.2,0],_grp,"this moveincargo posila3"]
+posila3 domove [12370,6120.42]
+posila3 flyinheight _vyska
+
+;----------------------------------------
+[]exec "bh1.sqs"
+[]exec "bh2.sqs"
+[]exec "bh3.sqs"
+
+exit

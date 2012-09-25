@@ -1,0 +1,20 @@
+
+;-------- Smoke granades for TASK 9 (Find Mi-17,secondary) ------------------
+
+
+_x = random 2
+_x = round _x
+? _x == 0 : _color = "smokeShell"
+? _x == 1 : _color = "smokeShellGreen"
+? _x == 2 : _color = "smokeShellRed"
+
+#loop
+_color createVehicle [(Crash select 0) - 15,(Crash select 1) - 15,0.1]
+~ 60
+? (status9 != "NONE") or (PilotSafe) or (!alive PilotDocument) : goto "konec"
+goto "loop"
+
+#konec
+exit
+
+

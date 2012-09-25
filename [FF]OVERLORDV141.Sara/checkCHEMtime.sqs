@@ -1,0 +1,65 @@
+? chemCas0 < 12 : goto "jump12"
+@ chemCas0 == 12 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 12 minutes left to chemical attack! *****"
+
+#jump12
+? chemCas0 < 10 : goto "jump10"
+@ chemCas0 == 10 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 10 minutes left to chemical attack! *****"
+
+#jump10
+? chemCas0 < 9 : goto "jump9"
+@ chemCas0 == 9 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 9 minutes left to chemical attack! *****"
+
+#jump9
+? chemCas0 < 8 : goto "jump8"
+@ chemCas0 == 8 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 8 minutes left to chemical attack! *****"
+
+#jump8
+? chemCas0 < 7 : goto "jump7"
+@ chemCas0 == 7 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 7 minutes left to chemical attack! *****"
+
+#jump7
+? chemCas0 < 6 : goto "jump6"
+@ chemCas0 == 6 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 6 minutes left to chemical attack! *****"
+
+#jump6
+? chemCas0 < 5 : goto "jump5"
+@ chemCas0 == 5 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 5 minutes left to chemical attack! *****"
+
+#jump5
+? chemCas0 < 4 : goto "jump4"
+@ chemCas0 == 4 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 4 minutes left to chemical attack! *****"
+
+#jump4
+? chemCas0 < 3 : goto "jump3"
+@ chemCas0 == 3 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 3 minutes left to chemical attack! *****"
+
+#jump3
+? chemCas0 < 2 : goto "jump2"
+@ chemCas0 == 2 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 2 minutes left to chemical attack! Hurry Up!!!*****"
+
+#jump2
+? chemCas0 < 1 : exit
+@ chemCas0 == 1 or deacweapon or !(alive chemUral)
+? deacweapon  or !(alive chemUral): exit
+[resistance,"HQ"] sidechat "***** 1 minute left to chemical attack! Hurry Up!!!*****"
+exit

@@ -1,0 +1,26 @@
+----------------
+PRIMARY MISSIONS:
+----------------
+1.Capture airport (task 1)
+2.Convoy (task 3) ***(failed)***
+3.Defend airport (task 5) ***(failed)***
+4.Capture Somato (task 6)
+5.Capture Cayo (task 12)
+6.Capture Ortego (task 8)
+7.Defend Ortego (task 14)
+
+-------------------
+SECONDARY MISSIONS:
+-------------------
+1.Kill weapon dealer in Bagango (task 2)
+2.Rescue officer in Chantico (task 4) ***(failed)***
+3.Destroy russians tanks (task 7) ***(failed)***
+4.Find crashed M1-17 (task 9) ***(failed)***
+5.Destroy convoy (task 10) ***(failed)***
+6.Destroy artillery (task11)
+7.Chemical weapon (task 13) ***(failed)***
+
+
+
+
+

@@ -1,0 +1,88 @@
+CayoAttack = false
+~360
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+;--------------Tank1------------------------------------------------------
+m1a1_1  = "" createVehicle [10261.4,6818.45,0.00138855]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc2,"this moveindriver T72Cayo"]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc2,"this moveingunner T72Cayo"]
+"soldierECrew" createUnit [[9268.04,6037.53,0.000652313],grpRc2,"this moveincommander T72Cayo"]
+
+driver T72Cayo execVM "ArmourGuard.sqf"
+
+;-------------ABRAMS1------------------------------------------------------
+abrams1c = "m1abrams" createVehicle [10261.4,6818.45,0.00138855]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveindriver abrams1c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveingunner abrams1c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveincommander abrams1c"]
+
+;-------------ABRAMS2------------------------------------------------------
+abrams2c = "m1abrams" createVehicle [10271.4,6818.45,0.00138855]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveindriver abrams2c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveingunner abrams2c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveincommander abrams2c"]
+
+;-------------ABRAMS3------------------------------------------------------
+abrams3c = "m1abrams" createVehicle [10251.4,6818.45,0.00138855]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveindriver abrams3c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveingunner abrams3c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveincommander abrams3c"]
+
+;-------------ABRAMS4------------------------------------------------------
+abrams4c = "m1abrams" createVehicle [10281.4,6818.45,0.00138855]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveindriver abrams4c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveingunner abrams4c"]
+"soldierWCrew" createUnit [getpos usa, grpUSAc1,"this moveincommander abrams4c"]
+
+~50
+
+abrams1c doMove [9838.91,6288.52,0.00133896]
+abrams2c doMove [9848.91,6278.52,0.00133896]
+abrams3c doMove [9858.91,6268.52,0.00133896]
+abrams4c doMove [9868.91,6258.52,0.00133896]
+CayoAttack = true
+publicVariable "CayoAttack"
+
+~150
+;-------------KAMOV1------------------------------------------------------
+kamov1c = "ka50" createVehicle [9505.9,3499.5,0.00122881]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov1c"]
+kamov1c doMove getpos cayo
+kamov1c execVM "heliguard.sqf"
+~10
+;-------------KAMOV2------------------------------------------------------
+kamov2c = "ka50" createVehicle [9525.9,3499.5,0.00122881]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov2c"]
+kamov2c doMove getpos cayo
+kamov2c execVM "heliguard.sqf"
+~10
+;-------------KAMOV2------------------------------------------------------
+kamov3c = "ka50" createVehicle [9545.9,3499.5,0.00122881]
+"soldierEpilot" createUnit [getpos rus,grpkamov ,"this moveindriver kamov3c"]
+kamov3c doMove getpos cayo
+kamov3c execVM "heliguard.sqf"
+
+~140
+abrams1c doMove [9155.16,6064.64,0.00143814]
+abrams2c doMove [9155.16,6054.64,0.00143814]
+abrams3c doMove [9155.16,6044.64,0.00143814]
+abrams4c doMove [9155.16,6034.64,0.00143814]
+
+;----------------GLOBAL--------------------------------------------------
+#skok
+@CayoAttack
+~50
+[resistance,"HQ"] sideChat "***** 4 US Abrams are going to help us near Cayo *****"
+
+
+;-----------SERVER--------------------
+? not local server : exit
+
+@status12 == "DONE"
+abrams1c doMove [12414.3,7459.34,0.00145531]
+abrams2c doMove [12424.3,7459.34,0.00145531]
+abrams3c doMove [12434.3,7459.34,0.00145531]
+abrams4c doMove [12444.3,7459.34,0.00145531]
+
+exit

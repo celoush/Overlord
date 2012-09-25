@@ -1,0 +1,134 @@
+
+;-------- TASK 10 (Destroy convoy,secondary) ------------------
+
+
+@status9 == "DONE" or status9 == "FAILED" 
+
+~20
+
+[resistance,"HQ"] sideChat "***** Recieved information about convoy *****"
+~8
+player say "telegraph"
+"10"objStatus "ACTIVE" 
+~1
+hint "Destroy russian convoy"
+[resistance,"HQ"] sideChat "***** New secondary mission: *****"
+~1
+[resistance,"HQ"] sideChat "***** Destroy russian convoy *****"
+~1
+;-----------SERVER---------------------------------------------
+? not local server :goto "konec"
+
+grpConvoy1 = createGroup east
+grpConvoy2 = createGroup east
+grpConvoy3 = createGroup east
+grpConvoy4 = createGroup east
+grpConvoy5 = createGroup east
+grpConvoy6 = createGroup east
+grpConvoy7 = createGroup east
+grpConvoy8 = createGroup east
+grpConvoy9 = createGroup east
+
+;-------------BVP2---------------------------------------------
+bvp2Konvoj = "brdm2" createVehicle [12635.4,13436,0.000915527]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy1,"this moveindriver bvp2Konvoj"]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy1,"this moveingunner bvp2Konvoj"]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy1,"this moveincommander bvp2Konvoj"]
+bvp2Konvoj setdir 95
+
+
+;-------------Brdm1---------------------------------------------
+bvp1Konvoj = "brdm2" createVehicle [12146.4,17314,0.00146484]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy2,"this moveindriver bvp1Konvoj"]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy2,"this moveingunner bvp1Konvoj"]
+bvp1Konvoj setdir 185
+bvp1Konvoj doMove getMarkerPos "Carmen"
+~8
+;-------------Truck1---------------------------------------------
+Truck1Konvoj = "URALRepair" createVehicle [12148,17319,0.00146484]
+"soldierE" createUnit [getpos rus2,grpConvoy3,"this moveindriver Truck1Konvoj"]
+Truck1Konvoj setdir 185
+Truck1Konvoj doMove getMarkerPos "Carmen"
+~8
+;-------------Truck2---------------------------------------------
+Truck2Konvoj = "URALRefuel" createVehicle [12150,17329,0.00146484]
+"soldierE" createUnit [getpos rus2,grpConvoy4,"this moveindriver Truck2Konvoj"]
+Truck2Konvoj setdir 185
+Truck2Konvoj doMove getMarkerPos "Carmen"
+~8
+;-------------Truck3---------------------------------------------
+Truck3Konvoj = "URALRefuel" createVehicle [12153,17338.00146484]
+"soldierE" createUnit [getpos rus2,grpConvoy5,"this moveindriver Truck3Konvoj"]
+Truck3Konvoj setdir 185
+Truck3Konvoj doMove getMarkerPos "Carmen"
+~8
+;-------------Truck4---------------------------------------------
+Truck4Konvoj = "URALReammo" createVehicle [12155,17347.00146484]
+"soldierE" createUnit [getpos rus2,grpConvoy6,"this moveindriver Truck4Konvoj"]
+Truck4Konvoj setdir 185
+Truck4Konvoj doMove getMarkerPos "Carmen"
+~8
+;-------------Truck5---------------------------------------------
+Truck5Konvoj = "URALReammo" createVehicle [12159,17357.00146484]
+"soldierE" createUnit [getpos rus2,grpConvoy7,"this moveindriver Truck5Konvoj"]
+Truck5Konvoj setdir 185
+Truck5Konvoj doMove getMarkerPos "Carmen"
+~8
+;-------------Truck6---------------------------------------------
+Truck6Konvoj = "URALReammo" createVehicle [12162,17364.00146484]
+"soldierE" createUnit [getpos rus2,grpConvoy8,"this moveindriver Truck6Konvoj"]
+Truck6Konvoj setdir 185
+Truck6Konvoj doMove getMarkerPos "Carmen"
+~45
+;-------------Brdm2---------------------------------------------
+bvp3Konvoj = "brdm2" createVehicle [12170,17369,0.00146484]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy9,"this moveindriver bvp3Konvoj"]
+"soldierEcrew" createUnit [getpos rus2,grpConvoy9,"this moveingunner bvp3Konvoj"]
+bvp3Konvoj setdir 185
+bvp3Konvoj doMove getMarkerPos "Carmen"
+
+;------------------------------------
+[]exec "Convoy.sqs"
+[]exec "ConvoyDoMove.sqs"
+
+;---------------- GLOBAL --------------------------------------
+#konec
+
+@(status10 == "DONE" or status10 == "FAILED")
+"10"objStatus "HIDDEN" 
+
+?status10 == "DONE": titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]; [resistance,"HQ"] sideChat "***** Great job. Convoy was destroyed *****";[west,"HQ"] sideChat "***** Great job. Convoy was destroyed *****";playsound "fanfare"
+
+?status10 == "FAILED": titleText ["M I S S I O N   F A I L E D ","PLAIN",2]; [resistance,"HQ"] sideChat "***** Convoy came to russian base  *****";[west,"HQ"] sideChat "***** Convoy came to russian base  *****"
+~60
+{_x setdammage 1}foreach units grpConvoy1
+{_x setdammage 1}foreach units grpConvoy2
+{_x setdammage 1}foreach units grpConvoy3
+{_x setdammage 1}foreach units grpConvoy4
+{_x setdammage 1}foreach units grpConvoy5
+{_x setdammage 1}foreach units grpConvoy6
+{_x setdammage 1}foreach units grpConvoy7
+{_x setdammage 1}foreach units grpConvoy8
+{_x setdammage 1}foreach units grpConvoy9
+~2
+deletegroup grpConvoy1
+deletegroup grpConvoy2
+deletegroup grpConvoy3
+deletegroup grpConvoy4
+deletegroup grpConvoy5
+deletegroup grpConvoy6
+deletegroup grpConvoy7
+deletegroup grpConvoy8
+deletegroup grpConvoy9
+~2
+deleteVehicle bvp3Konvoj
+deleteVehicle bvp2Konvoj
+deleteVehicle bvp1Konvoj
+deleteVehicle Truck6Konvoj
+deleteVehicle Truck6Konvoj
+deleteVehicle Truck5Konvoj
+deleteVehicle Truck4Konvoj
+deleteVehicle Truck3Konvoj
+deleteVehicle Truck2Konvoj
+deleteVehicle Truck1Konvoj
+exit 

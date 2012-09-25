@@ -1,0 +1,37 @@
+@alive player
+~1
+? status1 == "DONE" : player setPos [9600.94,9955.65];"Airport" setMarkerColor "colorGreen"  
+? status4 == "DONE" or status4 == "Failed" :  "Chantico" setMarkerColor "colorGreen"
+? status6 == "DONE" :  "Somato" setMarkerColor "colorGreen"
+? status12 == "DONE" :  "Cayo" setMarkerColor "colorGreen"
+? status8 == "DONE" and resp == "south":  "Ortego" setMarkerColor "colorGreen";player setPos [12346.9,6972.93]
+? status8 == "DONE" and resp == "north":  "Ortego" setMarkerColor "colorGreen";player setPos [12439,7398.4,0]
+? status11 == "DONE" :  "ArtyBase" setMarkerColor "colorGreen"
+? corazolClear : "corazol" setMarkerColor "colorGreen"
+? status13 == "FAILED" : []exec "cough.sqs"
+
+
+~2
+titleText ["[ F F ]  O V E R L O R D  \n\n\n\n [ F F ] S t u d i o \n\n...by FriZY & Faust","plain",2]
+
+~6
+
+? player in [a1,a2,a3,a4,a5,a6,a7,p1] : titleText [format["***** ALPHA TEAM *****\n LEADER: %1\nPILOT: %2", name a1,name p1 ],"PLAIN DOWN"]
+~3
+
+? player in [a21,a22,a23,a24,a25,a26,p4] :  titleText [format["***** BRAVO TEAM *****\n LEADER: %1\nPILOT: %2", name a21,name p4 ],"PLAIN DOWN"]
+~3
+
+? player in [a15,a16,a17,a18,a19,a20,p3] : titleText [format["***** CHARLIE TEAM *****\n LEADER: %1\nPILOT: %2", name a15,name p3 ],"PLAIN DOWN"]
+~3
+
+"20" objStatus "hidden"
+
+? player in [a8,a9,a10,a11,a12,a13,a14,p2] : titleText [format["***** DELTA TEAM *****\n LEADER: %1\nPILOT: %2", name a8,name p2 ],"PLAIN DOWN"]
+~3
+
+hint "*************************\nOPERATION OVERLORD:\n*************************\n7 primary missions \n7 secondary missions\n\nShow missions status with radio (0-0-0)\n\nShow your squad with radio (0-0-9)\n\nShow pilots and medics with radio \n(0-0-8)\n\n"
+~10
+hint "ONLY PILOTS CAN FLY !!!"
+
+exit

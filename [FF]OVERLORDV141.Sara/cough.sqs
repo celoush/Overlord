@@ -1,0 +1,33 @@
+~12
+
+_dis=135
+_gas = 0.25
+_infected = false
+
+#loop
+_kde = chemPlace
+? chemend : exit
+~10
+? player distance chemPlace <_dis : goto "green"
+? _infected : player groupchat "OK, here is fresh air"; _infected = false
+goto "loop"
+
+#green
+_infected = true
+player say "cough1"
+_damage = getdammage player + _gas
+? _damage > 0.99 : goto "death"
+player setdammage _damage
+~1
+player groupchat format ["Argghh, I should get out from this place! dammage: %1",_damage]
+~3
+player say "cough2"
+goto "loop"
+
+#death
+player groupchat "In few seconds poisoned gas will kill you."
+player say "cough2"
+~random 5 + 3
+player setdammage 1
+~20
+goto "loop"

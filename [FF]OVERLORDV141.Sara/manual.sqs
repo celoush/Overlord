@@ -1,0 +1,22 @@
+
+;-------- Plans founded ------------------
+
+_i = 0
+? plans : goto "loop"
+menoplans = name player
+plans = true
+publicvariable "plans"
+publicvariable "menoplans"
+
+
+#loop
+~0.04
+hint format ["Looking for plans... %1",_i]
+_i = _i + 1
+? _i == 101 : goto "skok"
+goto "loop"
+
+#skok
+~0.5
+hint format ["%1 cable is for deactivation",cable]
+exit

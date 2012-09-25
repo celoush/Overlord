@@ -1,0 +1,31 @@
+
+;-------- Convoy status for TASK 10 (Destroy convoy,secondary) ------------------
+
+#loop
+?(!canMove Truck1Konvoj and !canMove Truck2Konvoj and !canMove Truck3Konvoj and !canMove Truck4Konvoj and !canMove Truck5Konvoj and !canMove Truck6Konvoj) : status10 = "DONE";publicVariable "status10"; exit
+? Truck1Konvoj distance [19276,13978,0.00142479] < 150 : status10 = "FAILED";publicVariable "status10"; goto "delete"
+? Truck2Konvoj distance [19276,13978,0.00142479] < 150 : status10 = "FAILED";publicVariable "status10"; goto "delete"
+? Truck3Konvoj distance [19276,13978,0.00142479] < 150 : status10 = "FAILED";publicVariable "status10"; goto "delete"
+? Truck4Konvoj distance [19276,13978,0.00142479] < 150 : status10 = "FAILED";publicVariable "status10"; goto "delete"
+? Truck5Konvoj distance [19276,13978,0.00142479] < 150 : status10 = "FAILED";publicVariable "status10"; goto "delete"
+? Truck6Konvoj distance [19276,13978,0.00142479] < 150 : status10 = "FAILED";publicVariable "status10"; goto "delete"
+~10
+goto "loop"
+
+#delete
+~15
+Truck1Konvoj setpos [0,0,0]
+Truck2Konvoj setpos [0,0,0]
+Truck3Konvoj setpos [0,0,0]
+Truck4Konvoj setpos [0,0,0]
+Truck5Konvoj setpos [0,0,0]
+Truck6Konvoj setpos [0,0,0]
+~2
+Truck1Konvoj setdammage 1
+Truck2Konvoj setdammage 1
+Truck3Konvoj setdammage 1
+Truck4Konvoj setdammage 1
+Truck5Konvoj setdammage 1
+Truck6Konvoj setdammage 1
+
+exit

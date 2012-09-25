@@ -1,0 +1,13 @@
+_grp = para2
+_heli = posila2
+_count = 11
+@ _heli distance [12200,6120.42] < 1000 
+_i = 0
+
+#loop
+~0.45
+_kto = units _grp select _i
+_kto action ["eject", _heli] 
+unassignvehicle _kto
+_i = _i+1
+?_i < _count :goto "loop"

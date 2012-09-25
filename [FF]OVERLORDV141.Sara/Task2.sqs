@@ -1,0 +1,70 @@
+
+;-------- TASK 2 (DEALER,secondary) ------------------
+
+~60
+[resistance,"HQ"] sideChat " ***** We have information about weapon dealer in Bagango ***** "
+[west,"HQ"] sideChat " ***** We have information about weapon dealer in Bagango ***** "
+~5
+player say "telegraph"
+"2"objStatus "ACTIVE" 
+~1
+hint"KILL WEAPON DEALER IN BAGANGO"
+[resistance,"HQ"] sideChat " ***** New secondary mission: ***** "
+[west,"HQ"] sideChat " ***** New secondary mission: ***** "
+~1
+[resistance,"HQ"] sideChat " ***** KILL WEAPON DEALER IN BAGANGO ***** "
+[west,"HQ"] sideChat " ***** KILL WEAPON DEALER IN BAGANGO ***** "
+"task2" setMarkerPos [14009,12811]
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+"hilux1_civil_1_open" createVehicle [14030.5,12815.9,0.00101852]
+
+"civilian19" createUnit [ [14012.1,12808.6,0.00138474] , group rus,"this setpos [14012.1,12808.6,0.00138474]"]
+"civilian19" createUnit [ [14014.4,12802.4,0.00094223] , group rus,"this setpos [14014.4,12802.4,0.00094223];;this addweapon ""stinger""; this addmagazine ""stinger"" "]
+"civilian19" createUnit [ [14014.4,12800.4,0.00094223] , group rus,"this setpos [14014.4,12800.4,0.00094223] "]
+"civilian19" createUnit [ [14023,12817.4,0.00128174]   , group rus,"this setpos [14023,12817.4,0.00128174]   "]
+
+~1
+
+"civilian10" createUnit [[14009.2,12811.5,0.00131226], group rus, "dealer = this;this setpos [14009.2,12811.5,4] "]
+
+"civilian19" createUnit [ [14027.4,12826.6,0.00128937] , group rus,"this setpos [14027.4,12826.6,0.00128937] "]
+"civilian19" createUnit [ [14018.9,12820.2,0.00128174] , group rus,"this setpos [14018.9,12820.2,0.00128174] "]
+"civilian19" createUnit [ [14006.2,12819.2,0.00127029] , group rus,"this setpos [14006.2,12819.2,0.00127029] "]
+"civilian19" createUnit [ [14004.9,12807.7,0.00127029] , group rus,"this setpos [14004.9,12807.7,0.00127029] "]
+"civilian19" createUnit [ [14011.9,12813.2,0.00126266] , group rus,"this setpos [14011.9,12813.2,0.00126266] "]
+"civilian19" createUnit [ [14008.7,12813.2,0.00126266] , group rus,"this setpos [14008.7,12813.2,0.00126266] "]
+"civilian19" createUnit [ [14015.9,12813.6,0.00123978] , group rus,"this setpos [14015.9,12813.6,0.00123978] "]
+"civilian19" createUnit [ [14018.9,12811.6,0.00122833] , group rus,"this setpos [14018.9,12811.6,0.00122833] "]
+"civilian19" createUnit [ [14018.8,12813.6,0.00122833] , group rus,"this setpos [14018.8,12813.6,0.00122833] "]
+~1
+"civilian19" createUnit [ [14014.3,12817.6,0.00123215] , group rus,"this setpos [14014.3,12817.6,4] "]
+"civilian19" createUnit [ [14016.2,12812.9,0.00121307] , group rus,"this setpos [14016.2,12812.9,4] "]
+"civilian19" createUnit [ [14018.9,12816.7,0.00121307] , group rus,"this setpos [14018.9,12816.7,4] "]
+"civilian19" createUnit [ [14009.7,12817.3,0.00120926] , group rus,"this setpos [14009.7,12817.3,4] "]
+"civilian19" createUnit [ [14011.8,12811.9,0.00120926] , group rus,"this setpos [14011.8,12811.9,4] "]
+
+{_x addmagazine "30Rnd_545x39_AK"} forEach units group rus
+{_x addmagazine "30Rnd_545x39_AK"} forEach units group rus
+{_x addmagazine "30Rnd_545x39_AK"} forEach units group rus
+{_x addweapon "AK74"} forEach units group rus
+{_x disableAI "move"} forEach units group rus
+
+;---------------------------GLOBAL----------------------------------------------------------------
+#skok
+
+@not(alive dealer)
+titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]
+"2"objStatus "HIDDEN" 
+status2 = "DONE"
+[resistance,"HQ"] sideChat " ***** Good job. Weapon dealer is dead ***** "
+[west,"HQ"] sideChat " ***** Good job. Weapon dealer is dead ***** "
+"task2" setMarkerPos [0,0]
+playsound "fanfare"
+
+
+exit 
+
+

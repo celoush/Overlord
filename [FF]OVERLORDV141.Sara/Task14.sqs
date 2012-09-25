@@ -1,0 +1,93 @@
+;-------- TASK 14 (Defend Ortego, primary) ------------------
+~5
+"Respawn_guerrila" setMarkerPos [12346.9,6972.93]
+hint "Respawn position was changed (Ortego - South)"
+"ortego" setmarkersize [0,0]
+
+? landed : goto "defend"
+
+~5
+[resistance,"HQ"] sideChat "***** In 2 minutes russians army will land and attack on Ortego from South. Prepare!!! *****"
+"19"objStatus "ACTIVE" 
+~5
+[resistance,"HQ"] sideChat "***** US army will help us *****"
+
+? local server :tankCorazol setpos [12326.2,6823.46,0.00125885]; tankCorazol setdir 270;tankCorazol2 setpos [12324,6829.46,0.00125885];tankCorazol2 setdir 270;[]exec "usahelp.sqs";corazolHELP1 = createGroup west;corazolHELP2 = createGroup west;corazolHELP3 = createGroup west;corazolHELP4 = createGroup west
+
+~115
+
+#defend
+defendTime = param1
+
+? param1 != 0 : goto "jump"
+failedCount = 0
+status5 = "FAILED"
+?status3 == "FAILED" : failedCount = failedCount +1
+?status4 == "FAILED" : failedCount = failedCount +1
+?status5 == "FAILED" : failedCount = failedCount +1
+?status7 == "FAILED" : failedCount = failedCount +1
+?status9 == "FAILED" : failedCount = failedCount +1
+?status10 == "FAILED" : failedCount = failedCount +1
+?status13 == "FAILED" : failedCount = failedCount +1
+
+? failedCount == 0 : defendTime = 900
+? failedCount == 1 : defendTime = 1200
+? failedCount == 2 : defendTime = 1500
+? failedCount == 3 : defendTime = 1800
+? failedCount == 4 : defendTime = 1800
+? failedCount > 4 : defendTime = 1800
+
+#jump
+
+
+~10
+;-----------GLOBAL--------------------
+player say "telegraph"
+"14"objStatus "ACTIVE" 
+"19"objStatus "HIDDEN" 
+~1
+hint "Defend Ortego"
+[resistance,"HQ"] sideChat "***** Russians army have landed on beach !!! *****"
+~2
+[resistance,"HQ"] sideChat format ["***** Defend Ortego for %1 minutes until reinforcements arrive *****",defendTime/60]
+? param1 == 0 : hint format ["%1 failed missions = %2 minutes of defending",failedCount,defendTime/60]
+
+"attack1" setmarkerpos  [12078.5,6120.42]
+"attack2" setmarkerpos  [12382.8,6207.75]
+"attack3" setmarkerpos  [12744.1,6226.85]
+"attack4" setmarkerpos  [13253,6385.47]
+
+corazolGroup1 = createGroup east
+corazolGroup2 = createGroup east
+corazolGroup3 = createGroup east
+corazolGroup4 = createGroup east
+corazolGroup5 = createGroup east
+corazolGroup6 = createGroup east
+corazolGroup7 = createGroup east
+corazolGroup8 = createGroup east
+corazolGroup9 = createGroup east
+
+[]exec "defendTime.sqs"
+[]exec "respawnOrtego.sqs"
+
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+landed = true
+publicvariable "landed"
+[]exec "vehicleAttack.sqs"
+[]exec "soldierattack.sqs"
+[]exec "helliattack.sqs"
+
+
+~defendTime
+status14 = "DONE"
+publicvariable "status14"
+;---------------- GLOBAL -------------
+#skok
+
+@status14 == "DONE"
+
+[resistance,"HQ"] sideChat format ["***** OK, we have defended Ortego for %1 minutes. Reinforcement have arrived *****",defendTime/60]; titleText ["M I S S I O N   C O M P L E T E ","PLAIN",2]; playsound "fanfare"
+
+exit

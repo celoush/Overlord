@@ -1,0 +1,47 @@
+abramsHELP1 = "m1abrams" createvehicle [12380,6711.04,0.00139618]
+abramsHELP1 setdir 180
+~1
+"soldierw" createunit [[12385,6711.04,0.00139618] ,corazolHELP1,"this moveindriver abramsHELP1"]
+"soldierw" createunit [[12385,6711.04,0.00139618] ,corazolHELP1,"this moveingunner abramsHELP1"]
+"soldierw" createunit [[12385,6711.04,0.00139618] ,corazolHELP1,"this moveincommander abramsHELP1"]
+
+abramsHELP2 = "m1abrams" createvehicle [12481.1,6707.14,0.0012989]
+abramsHELP2 setdir 180
+~1
+"soldierw" createunit [[12485.1,6707.14,0.0012989] ,corazolHELP2,"this moveindriver abramsHELP2"]
+"soldierw" createunit [[12485.1,6707.14,0.0012989] ,corazolHELP2,"this moveingunner abramsHELP2"]
+"soldierw" createunit [[12485.1,6707.14,0.0012989] ,corazolHELP2,"this moveincommander abramsHELP2"]
+~2
+;--------------group 1 -------------------------------------------------------------
+_kde = [12479.4,6737.35,0.00116158]
+"soldierw" createunit [_kde,corazolHELP3,"this setdir 180"]
+~0.5
+"soldierw" createunit [_kde,corazolHELP3]
+~0.5
+"soldierwAT" createunit [_kde,corazolHELP3]
+~0.5
+"soldierwMG" createunit [_kde,corazolHELP3]
+~0.5
+"soldierwSNIPER" createunit [_kde,corazolHELP3]
+~0.5
+"soldierwAT" createunit [_kde,corazolHELP3]
+~0.5
+"soldierwMG" createunit [_kde,corazolHELP3]
+
+;--------------group 2 -------------------------------------------------------------
+_kde = [12353.8,6738.81,0.00133705]
+"soldierw" createunit [_kde,corazolHELP4,"this setdir 180"]
+~0.5
+"soldierw" createunit [_kde,corazolHELP4]
+~0.5
+"soldierwAT" createunit [_kde,corazolHELP4]
+~0.5
+"soldierwMG" createunit [_kde,corazolHELP4]
+~0.5
+"soldierwSNIPER" createunit [_kde,corazolHELP4]
+~0.5
+"soldierwAT" createunit [_kde,corazolHELP4]
+~0.5
+"soldierwMG" createunit [_kde,corazolHELP4]
+
+exit

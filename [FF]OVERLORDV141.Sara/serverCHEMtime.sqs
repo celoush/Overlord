@@ -1,0 +1,50 @@
+~180
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 12
+publicVariable "chemCas0"
+~120
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 10
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 9
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 8
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 7
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 6
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 5
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 4
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 3
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 2
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemCas0 = 1
+publicVariable "chemCas0"
+~60
+? deacWeapon  or !(alive chemUral): exit
+chemtime = true
+publicVariable "chemtime"
+exit
+

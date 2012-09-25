@@ -1,0 +1,27 @@
+;-----------SERVER--------------------
+? not local server :goto "skok"
+
+pocet2 = 0
+~10
+? alive tank1: pocet2 = pocet2 + 1
+? alive tank2: pocet2 = pocet2 + 1
+? alive tank3: pocet2 = pocet2 + 1
+
+publicVariable "pocet2"
+
+~5
+tank1 doMove [9430,6043]
+tank2 doMove [9541,5853]
+tank3 doMove [9156,5969]
+
+exit
+
+;---------------- GLOBAL ----------------------------------
+#skok
+"tanks" setMarkerPos [0,0]
+~15
+? pocet2 == 1 : [resistance,"HQ"] SideChat " *****  1 tank from enemy base is comming to Cayo ***** "
+? pocet2 == 2 : [resistance,"HQ"] SideChat " *****  2 tanks from enemy base are comming to Cayo ***** "
+? pocet2 == 3 : [resistance,"HQ"] SideChat " *****  3 tanks from enemy base are comming to Cayo ***** "
+
+exit 

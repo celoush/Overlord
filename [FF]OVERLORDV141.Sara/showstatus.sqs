@@ -1,0 +1,73 @@
+
+_T1 = status1
+_T2 = status2
+_T3 = status3
+_T4 = status4
+_T5 = status5
+_T6 = status6
+_T7 = status7
+_T8 = status8
+_T9 = status9
+_T10 = status10
+_T11 = status11
+_T12 = status12
+_T13 = status13
+_T14 = status14
+
+?_T1 == "NONE" : _T1 = "---"
+?_T2 == "NONE" : _T2 = "---"
+?_T3 == "NONE" : _T3 = "---"
+?_T4 == "NONE" : _T4 = "---"
+?_T5 == "NONE" : _T5 = "---"
+?_T6 == "NONE" : _T6 = "---"
+?_T7 == "NONE" : _T7 = "---"
+?_T8 == "NONE" : _T8 = "---"
+?_T9 == "NONE" : _T9 = "---"
+?_T10 == "NONE" : _T10 = "---"
+?_T11 == "NONE" : _T11 = "---"
+?_T12 == "NONE" : _T12 = "---"
+?_T13 == "NONE" : _T13 = "---"
+?_T14 == "NONE" : _T14 = "---"
+
+?_T1 == "DONE" : _T1 = "COMPLETE"
+?_T2 == "DONE" : _T2 = "COMPLETE"
+?_T3 == "DONE" : _T3 = "COMPLETE"
+?_T4 == "DONE" : _T4 = "COMPLETE"
+?_T5 == "DONE" : _T5 = "COMPLETE"
+?_T6 == "DONE" : _T6 = "COMPLETE"
+?_T7 == "DONE" : _T7 = "COMPLETE"
+?_T8 == "DONE" : _T8 = "COMPLETE"
+?_T9 == "DONE" : _T9 = "COMPLETE"
+?_T10 == "DONE" : _T10 = "COMPLETE"
+?_T11 == "DONE" : _T11 = "COMPLETE"
+?_T12 == "DONE" : _T12 = "COMPLETE"
+?_T13 == "DONE" : _T13 = "COMPLETE"
+?_T14 == "DONE" : _T14 = "COMPLETE"
+
+_hodZ = time % 3600
+_hod = (time - _hodz) / 3600
+
+_minZ = _hodZ % 60
+_min = (_hodZ - _minZ) / 60
+_sek = round _minZ
+
+_nic1 = ""
+? _hod < 10 : _nic1 = "0"
+
+_nic2 = ""
+? _min < 10 : _nic2 = "0"
+
+_nic3 = ""
+? _sek < 10 : _nic3 = "0"
+
+
+
+hint  format ["***************************\n OPERATION OVERLORD \n          %15%12:%16%13:%17%14          \n***************************\n\nPrimary missions:\n...........................\n\nCapture airport: %1 \nBring convoy: %2 \nDefend airport: %3 \nCapture Somato: %4 \nCapture Cayo: %18\nCapture Ortego: %5\nDefend Ortego: %20 \n\nSecondary missions:\n...........................\n\nKill dealer: %6\nRescue officer: %7 \nDestroy tanks: %8\nSecret documents: %9\nDestroy convoy: %10\nDestroy artillery: %11\nChemical weapon: %19", _T1 , _T3 , _T5 , _T6  , _T8, _T2, _T4,_T7, _T9, _T10, _T11, _hod, _min, _sek, _nic1, _nic2, _nic3, _T12, _T13,_T14] 
+
+
+exit
+
+
+
+
+hint  format ["PLAY TIME \n\n%4%1:%4%2:%4%3", _hod,_min,_sek,_nic1,_nic2,_nic3] 
